@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
     inputGroup:{
-        width:windoWidth * 0.7,
+        width: (windoWidth * 0.7) -10,
         height: 43,
         fontSize: 16,
         borderRadius: 5,

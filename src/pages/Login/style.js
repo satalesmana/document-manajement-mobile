@@ -3,7 +3,10 @@ import {
     Dimensions
 } from 'react-native'
 import { 
-    APP_PRIMARY 
+    BTN_PRIMARY,
+    TEXT_PRIMARY,
+    BTN_SENDONDARY,
+    TEXT_ERROR
 } from '../../utils'
 
 const windowHeight = Dimensions.get('window').height;
@@ -48,11 +51,28 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
     },
+    loginFormTextInputError: {
+        height: 43,
+        fontSize: 14,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: TEXT_ERROR,
+        backgroundColor: '#fafafa',
+        paddingLeft: 10,
+        marginTop: 5,
+        marginBottom: 5,
+    },
     loginButton: {
         borderRadius: 20,
         height: 45,
         marginTop: 10,
-        backgroundColor: APP_PRIMARY
+        backgroundColor: BTN_PRIMARY
+    },
+    cancelButton: {
+        borderRadius: 20,
+        height: 45,
+        marginTop: 10,
+        backgroundColor: BTN_SENDONDARY
     },
     logoImage: {
         justifyContent: 'center',
@@ -65,24 +85,50 @@ const styles = StyleSheet.create({
         borderBottomRightRadius:5,
         borderTopRightRadius:4,
         borderColor: '#eaeaea',
-        // marginLeft: 15,
-        // marginRight: 15,
     },
     input:{
         height: 43,
         fontSize: 16,
-        width:windoWidth * 0.7,
+        width: (windoWidth * 0.7) -25 ,
         backgroundColor: '#fafafa',
-        paddingLeft: 10
     },
     inputSelect:{
         borderWidth:1,
-        width:80,
+        width:100,
         height: 43,
         fontSize: 16,
         borderRadius: 5,
         borderColor: '#eaeaea',
         backgroundColor: '#fafafa'
+    },
+    containerCenter:{
+        flex:1,
+        justifyContent: 'center',
+        padding:25,
+    },
+    headeing:{
+        fontSize:24,
+        alignSelf:'center',
+        fontWeight:'bold',
+        marginBottom:30,
+        color:TEXT_PRIMARY
+    },
+    radioGroup:{
+        flexDirection:'row',
+        justifyContent:'flex-start'
+    },
+    radioItem:{
+        flexDirection:'row',
+        paddingLeft:15
+    },
+    labelRadio:{
+        alignSelf:'center'
+    },
+    TextErr:{
+        color: TEXT_ERROR,
+        fontSize:11,
+        fontStyle:'italic',
+        marginBottom:5
     }
 })
 

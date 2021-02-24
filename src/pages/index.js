@@ -6,10 +6,10 @@ import SliderScreen from './Slider'
 import FavouritesScreen from './Favourites'
 import PublicScreen from './Public'
 import RelatedScreen from './Related'
-import LoginScreen from './Login'
 import MytaskScreen from './Mytask'
 import { DocumentViewScreen } from './Document'
 import { SearchSelectiontScreen, SearchResultScreen } from './Search'
+import { LoginScreen, SetupScreen} from './Login'
 
 export { 
     HomeScreen,
@@ -20,6 +20,7 @@ export {
     PublicScreen,
     RelatedScreen,
     LoginScreen,
+    SetupScreen,
     MytaskScreen,
     DocumentViewScreen,
     SearchSelectiontScreen,

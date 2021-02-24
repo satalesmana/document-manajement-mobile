@@ -15,7 +15,8 @@ import {
     MytaskScreen,
     DocumentViewScreen,
     SearchSelectiontScreen,
-    SearchResultScreen
+    SearchResultScreen,
+    SetupScreen
  } from '../pages';
 
 const Tab = createBottomTabNavigator();
@@ -35,10 +36,11 @@ const MainScreen = () => {
 
 const Router = () => {
     return (
-        <Stack.Navigator initialRouteName="MainScreen">
+        <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="MainScreen" component={MainScreen}  options={{ headerShown:false }}/>
             <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown:false }}/>
             <Stack.Screen name="SliderScreen" component={SliderScreen} options={{ headerShown:false }}/>
+            <Stack.Screen name="SetupScreen" component={SetupScreen} options={{headerShown:false}} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} options={{headerShown:false}} />
             <Stack.Screen name="AccountScreen" component={AccountScreen} options={{headerShown:false}} />
             <Stack.Screen name="DocumentViewScreen" component={DocumentViewScreen} options={{headerShown:false}}/>

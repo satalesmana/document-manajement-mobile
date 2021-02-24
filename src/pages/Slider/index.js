@@ -81,7 +81,7 @@ const SliderScreen = ({ navigation }) => {
                 renderItem={renderItem}
                 renderNextButton={renderNextButton}
                 renderDoneButton={renderDoneButton}
-                onDone={() => navigation.replace('LoginScreen')}
+                onDone={() => navigation.replace('SetupScreen')}
                 />
         </SafeAreaView>
     )
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',  
     },
     avatarImage:{
-        width:300,
-        height:300
+        width:30,
+        height:30
     },
     activeDotStyle:{
         backgroundColor:APP_PRIMARY

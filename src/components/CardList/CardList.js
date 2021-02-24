@@ -11,7 +11,7 @@ import {
 import { Icon, Badge } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
 
-const CardList = () => {
+const CardList = ({data={}}) => {
     const navigation = useNavigation();
 
     const onViewDocument = () =>{
@@ -35,14 +35,14 @@ const CardList = () => {
                         badgeStyle={styles.badges}
                         status="success" // primary, error
                         value={
-                            <Text style={styles.badgeText}> POLECY </Text>
+                            <Text style={styles.badgeText}> {data.type_name} </Text>
                         } />
 
                     <Text 
                         style={styles.textNumber}
                         ellipsizeMode='tail' 
                         numberOfLines={1}>
-                            11293/239980/213
+                            {data.number}
                     </Text>
                 </View>
 
@@ -52,7 +52,7 @@ const CardList = () => {
                         style={styles.textTitle}
                         ellipsizeMode='tail' 
                         numberOfLines={2}>
-                            Document Name is Lorenp ipsum Lorenp ipsum Lorenp ipsum
+                            {data.title}
                     </Text>
                 </TouchableOpacity>
                 
@@ -63,7 +63,7 @@ const CardList = () => {
                             size={13}
                             iconStyle={styles.iconSub}
                             type='font-awesome'/>
-                        <Text style={styles.textSub}>Ver. 1</Text>
+                        <Text style={styles.textSub}>Ver. {data.version}</Text>
                     </View>
                     <View style={styles.gridContent}>
                         <Icon
@@ -75,7 +75,10 @@ const CardList = () => {
                                 style={styles.textSub}
                                 ellipsizeMode='tail' 
                                 numberOfLines={1}>
-                                    Dep. Finance
+                                    Owner. 
+                                    { (data.owner) ?
+                                        data.owner.name : ''
+                                    }
                             </Text>
                     </View>
                 </View>
@@ -83,7 +86,7 @@ const CardList = () => {
                     style={styles.textCategory}
                     ellipsizeMode='tail' 
                     numberOfLines={1}>
-                        Category, Category
+                        {(data.categories) ? data.categories.join(', ') : ''}
                 </Text>
             </View>
             

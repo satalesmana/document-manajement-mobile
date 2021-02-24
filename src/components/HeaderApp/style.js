@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
        width:windoWidth * 0.2,
     },
     arrowBack:{
+        marginTop:10,
         marginBottom:20
     },
     avatarProfile:{

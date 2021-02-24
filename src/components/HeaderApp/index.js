@@ -12,13 +12,17 @@ import {
     View,
     TouchableOpacity
 } from 'react-native'
-
+import { useSelector } from 'react-redux'
 
 const HeaderApp = ({navigation}) => {
     const onBackArrow = () =>{
         navigation.goBack()
     }
 
+    const { user } = useSelector(state=>state.accountReducer)
+    
+    const avatarUser = (user.profile_photo_url) ? user.profile_photo_url : 'https://randomuser.me/api/portraits/men/41.jpg'
+    
     return (
         <View style={styles.roudedContainer}>
             <ImageBackground 
@@ -33,11 +37,11 @@ const HeaderApp = ({navigation}) => {
                             containerStyle={styles.avatarProfile}
                             rounded
                             source={{
-                                uri:'https://randomuser.me/api/portraits/men/41.jpg',
+                                uri:avatarUser,
                             }}
                             size={75}/>
-                        <Text style={styles.title}>Sata Lesmana</Text>
-                        <Text style={styles.description}>lesmana@lamsolusi.com</Text>
+                        <Text style={styles.title}>{user.name}</Text>
+                        <Text style={styles.description}>{user.email}</Text>
                 </View>
             </ImageBackground>
             <View style={styles.boxTask}>

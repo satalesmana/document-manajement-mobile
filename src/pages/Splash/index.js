@@ -1,5 +1,6 @@
 import React, { useEffect }from 'react'
 import { View } from 'react-native';
+import { useSelector } from 'react-redux'
 import { 
     ImgLogo,
     ImgSplahBg 
@@ -13,9 +14,24 @@ import {
 } from 'react-native'
 
 const SplashScreen = ({ navigation }) => {
+    const { baseUrl } = useSelector(state=>state.configReducer)
+    const { token } = useSelector(state=>state.accountReducer)
+    
     useEffect(() => {
         setTimeout( () => {
-            navigation.replace('SliderScreen');
+            
+            if(baseUrl.length == 0){
+                navigation.replace('SliderScreen');
+
+            }else if(baseUrl.length > 0 && token ==''){
+                navigation.replace('LoginScreen');
+
+            }else if(token !=''){
+                navigation.replace('MainScreen');
+            }else{
+                navigation.replace('SliderScreen');
+            }
+            
         }, 3000)
     }, [navigation]);
 

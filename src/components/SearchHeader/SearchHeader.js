@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './style'
 import { Appbar } from 'react-native-paper'
 import { Picker } from '@react-native-picker/picker'
+import { useSelector } from 'react-redux'
 import { 
     TEXT_SECONDARY
 } from '../../utils'
@@ -18,6 +19,9 @@ import {
 } from 'react-native-elements'
 
 const SearchHeader = ({placeHolder, navigation}) => { 
+    const { user } = useSelector(state=>state.accountReducer)
+    const avatarUser = (user.profile_photo_url) ? user.profile_photo_url : 'https://randomuser.me/api/portraits/men/41.jpg'
+
     const [selectedValue, setSelectedValue] = React.useState("Http");
     const onIconSearchPress = () =>{
         navigation.navigate("SearchSelectiontScreen")
@@ -45,7 +49,7 @@ const SearchHeader = ({placeHolder, navigation}) => {
                         <Avatar
                             rounded
                             source={{
-                                uri: 'https://randomuser.me/api/portraits/men/41.jpg'
+                                uri: avatarUser
                             }}
                             onPress={onViewProfile}
                             size="small"/>
