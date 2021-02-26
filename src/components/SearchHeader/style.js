@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
         backgroundColor:APP_PRIMARY,
         flexDirection:'column',
         paddingLeft:20,
+        paddingTop:20,
+        height:78
     },
     toolbarSub:{
         backgroundColor: 'white',

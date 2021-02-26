@@ -1,5 +1,7 @@
 import {
-    SET_RELATED_DOKUMEN
+    SET_RELATED_DOKUMEN,
+    RESET_RELATED_DOKUMEN,
+    ADD_RELATED_DOKUMEN
 } from '../../actions'
 
 const initialState ={
@@ -13,6 +15,16 @@ const relatedDokumenReducer = (state = initialState, action) => {
             return{
                 ...state,
                 relatedDokumen:action.relatedDokumen
+            }
+        case RESET_RELATED_DOKUMEN:
+            return{
+                ...state,
+                relatedDokumen:[]
+            }
+        case ADD_RELATED_DOKUMEN:
+            return{
+                ...state,
+                relatedDokumen: [...state.relatedDokumen, ...action.relatedDokumen]
             }
         default:
             return state

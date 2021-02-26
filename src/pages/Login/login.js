@@ -14,7 +14,9 @@ import {
     TouchableWithoutFeedback,
     KeyboardAvoidingView,
     Text,
-    Platform
+    Platform,
+    StatusBar,
+    SafeAreaView
 } from 'react-native'
 import { setAccount } from '../../actions'
 
@@ -46,40 +48,44 @@ const LoginScreen = ({ navigation }) => {
     }
 
     return (
-        <KeyboardAvoidingView style={styles.containerView} behavior="padding">
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View style={styles.loginScreenContainer}>
-                    <View style={styles.loginFormView}>
-                        <View style={styles.logoImage}>
-                            <LogoVertical />
-                        </View>
-                        {/* <Text>{baseUrl}</Text> */}
-                        <TextInput 
-                            placeholder="Email" 
-                            placeholderColor= {TEXT_INPUT_HINT}
-                            value={username}
-                            onChangeText= {value =>setUsername(value)} 
-                            style={ ermsg.email ? styles.loginFormTextInputError : styles.loginFormTextInput} />
-                        { ermsg.email ? <Text style={styles.TextErr}>{ ermsg.email[0] }</Text>: null }
+        <SafeAreaView style={styles.containerView}>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+        
+            <KeyboardAvoidingView style={styles.containerView} behavior="padding">
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.loginScreenContainer}>
+                        <View style={styles.loginFormView}>
+                            <View style={styles.logoImage}>
+                                <LogoVertical />
+                            </View>
+                            {/* <Text>{baseUrl}</Text> */}
+                            <TextInput 
+                                placeholder="Email" 
+                                placeholderColor= {TEXT_INPUT_HINT}
+                                value={username}
+                                onChangeText= {value =>setUsername(value)} 
+                                style={ ermsg.email ? styles.loginFormTextInputError : styles.loginFormTextInput} />
+                            { ermsg.email ? <Text style={styles.TextErr}>{ ermsg.email[0] }</Text>: null }
 
-                        <TextInput 
-                            placeholder="Password" 
-                            placeholderColor={TEXT_INPUT_HINT} 
-                            value={password}
-                            onChangeText= {value =>setPasswrod(value)} 
-                            style={ ermsg.password ? styles.loginFormTextInputError : styles.loginFormTextInput}
-                            secureTextEntry={true}/>
-                        { ermsg.password ? <Text style={styles.TextErr}>{ ermsg.password[0] }</Text>: null }
-                        
-                        <Button
-                            buttonStyle={styles.loginButton}
-                            loading={loading}
-                            onPress={ onLoginPress }
-                            title="Sign In" />
+                            <TextInput 
+                                placeholder="Password" 
+                                placeholderColor={TEXT_INPUT_HINT} 
+                                value={password}
+                                onChangeText= {value =>setPasswrod(value)} 
+                                style={ ermsg.password ? styles.loginFormTextInputError : styles.loginFormTextInput}
+                                secureTextEntry={true}/>
+                            { ermsg.password ? <Text style={styles.TextErr}>{ ermsg.password[0] }</Text>: null }
+                            
+                            <Button
+                                buttonStyle={styles.loginButton}
+                                loading={loading}
+                                onPress={ onLoginPress }
+                                title="Sign In" />
+                        </View>
                     </View>
-                </View>
-            </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+                </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
     )
 }
 

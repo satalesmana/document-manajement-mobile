@@ -1,5 +1,7 @@
 import {
-    SET_FAVOURITE_DOKUMEN
+    SET_FAVOURITE_DOKUMEN,
+    RESET_FAVOURITE_DOKUMEN,
+    ADD_FAVOURITE_DOKUMEN
 } from '../../actions'
 
 const initialState ={
@@ -13,6 +15,16 @@ const favouriteDokumenReducer = (state = initialState, action) => {
             return{
                 ...state,
                 favouritedokumen:action.favouritedokumen
+            }
+        case RESET_FAVOURITE_DOKUMEN:
+            return{
+                ...state,
+                favouritedokumen:[]
+            }
+        case ADD_FAVOURITE_DOKUMEN:
+            return {
+                ...state,
+                favouritedokumen: [...state.favouritedokumen, ...action.favouritedokumen]
             }
         default:
             return state

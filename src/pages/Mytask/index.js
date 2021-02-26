@@ -8,7 +8,8 @@ import {
     ScrollView, 
     SafeAreaView, 
     View, 
-    Text 
+    Text,
+    StatusBar
 } from 'react-native'
 
 const MytaskScreen = ({navigation}) => {
@@ -18,6 +19,7 @@ const MytaskScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.bodyLightColor}>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
             <Appbar.Header dark={false} style={styles.appbarLight}>
                 <Appbar.Content title="My Task"/>
                 <View style={styles.avatarBlock}>

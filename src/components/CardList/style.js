@@ -30,7 +30,12 @@ const styles = StyleSheet.create({
         width:70,
         height:70,
         paddingTop:5,
+    },
+    boxBgPrimary:{
         backgroundColor:'#517fa4'
+    },
+    boxBgSecondary:{
+        backgroundColor:'#2b9955'
     },
     iconDoc:{
         color:'#fff',

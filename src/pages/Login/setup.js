@@ -15,7 +15,9 @@ import {
     View,
     Keyboard, 
     TextInput,
-    ScrollView
+    ScrollView,
+    StatusBar,
+    SafeAreaView
 } from 'react-native'
 import { 
     setForm, 
@@ -67,6 +69,8 @@ const SetupScreen = ({navigation}) => {
     
     return (
         <ScrollView style={styles.containerView} >
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <SafeAreaView>
             <KeyboardAvoidingView 
                 style={styles.containerView} 
                 behavior="padding">
@@ -133,6 +137,7 @@ const SetupScreen = ({navigation}) => {
                         onConfirmPressed={()=>onsetShowalert(false)}/>
                     
             </KeyboardAvoidingView>
+            </SafeAreaView>
         </ScrollView>
     )
 }

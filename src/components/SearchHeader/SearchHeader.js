@@ -18,17 +18,18 @@ import {
     Avatar 
 } from 'react-native-elements'
 
-const SearchHeader = ({placeHolder, navigation}) => { 
+const SearchHeader = ({placeHolder, navigation, onSetSortData}) => { 
     const { user } = useSelector(state=>state.accountReducer)
     const avatarUser = (user.profile_photo_url) ? user.profile_photo_url : 'https://randomuser.me/api/portraits/men/41.jpg'
+    const [selectedValue, setSelectedValue] = React.useState("title|asc");
 
-    const [selectedValue, setSelectedValue] = React.useState("Http");
-    const onIconSearchPress = () =>{
-        navigation.navigate("SearchSelectiontScreen")
-    }
+    const onIconSearchPress = () =>{ navigation.navigate("SearchSelectiontScreen") }
 
-    const onViewProfile = () =>{
-        navigation.navigate("AccountScreen")
+    const onViewProfile = () =>{ navigation.navigate("AccountScreen") }
+
+    const onSortData = (value) =>{
+        onSetSortData(value)
+        setSelectedValue(value)
     }
 
     return (
@@ -68,11 +69,13 @@ const SearchHeader = ({placeHolder, navigation}) => {
                 <Picker
                     style={styles.inputSelect}
                     selectedValue={selectedValue}
-                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                        <Picker.Item label="Effective Date (ASC)" value="http://" />
-                        <Picker.Item label="Effective Date (DSC)" value="https://" />
-                        <Picker.Item label="Document Number (ASC)" value="https://" />
-                        <Picker.Item label="Document Number (DSC)" value="https://" />
+                    onValueChange={(itemValue, itemIndex) => onSortData(itemValue)}>
+                        <Picker.Item label="Effective Date (ASC)" value="effective_date|asc" />
+                        <Picker.Item label="Effective Date (DESC)" value="effective_date|desc" />
+                        <Picker.Item label="Document Number (ASC)" value="number|asc" />
+                        <Picker.Item label="Document Number (DESC)" value="number|desc" />
+                        <Picker.Item label="Document Name (ASC)" value="title|asc" />
+                        <Picker.Item label="Document Name (DESC)" value="title|desc" />
                 </Picker>
                 
             </Appbar.Header>

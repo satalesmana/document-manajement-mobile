@@ -5,6 +5,8 @@ const { StyleSheet } = React;
 export default {
     appbarLight:{
         backgroundColor: 'white',
+        paddingTop:20,
+        height:78
     },
     bodyLightColor:{
         backgroundColor: 'white',

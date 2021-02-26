@@ -1,20 +1,22 @@
 import SliderOne from './sliderOne.svg'
 import SliderTwo from './sliderTwo.svg'
-import Logo from './logo.svg'
 
 import ImgHeaderBg from './headerBg.png'
 import ImgLogo from './ImgLogo.png'
 import ImgSplahBg from './splahBg.png'
 import ImgLogoVertical from './ImgLogoVertical.png'
-import PictuteDemo from './picture2.png'
+import headerBg2 from './headerBg2.png'
+import Slide1 from './slide1.png'
+import Slide2 from './slide2.png'
 
 export { 
     SliderOne, 
     SliderTwo, 
-    Logo,
-    ImgHeaderBg, 
     ImgSplahBg, 
     ImgLogo,
     ImgLogoVertical,
-    PictuteDemo
+    ImgHeaderBg, 
+    headerBg2,
+    Slide1,
+    Slide2
 };

@@ -5,23 +5,27 @@ import {
     TouchableOpacity
 } from 'react-native'
 import styles from './style'
-import {
-    PictuteDemo
-} from '../../assets'
 import { Icon, Badge } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
 
 const CardList = ({data={}}) => {
     const navigation = useNavigation();
 
-    const onViewDocument = () =>{
-        navigation.navigate('DocumentViewScreen')
-    }
+    // const onViewDocument = (data) =>{
+    //     console.log(data)
+    //     navigation.navigate('DocumentViewScreen')
+    // }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={onViewDocument}>
-                <View style={styles.boxIcon}>
+            <TouchableOpacity onPress={
+                () => {
+                    navigation.push('DocumentViewScreen',data)
+                }}>
+                <View style={[
+                        styles.boxIcon, 
+                        (data.type==1) ? styles.boxBgSecondary : styles.boxBgPrimary
+                    ]}>
                     <Icon
                         name='file-text-o'
                         type='font-awesome'
@@ -33,7 +37,7 @@ const CardList = ({data={}}) => {
                 <View style={styles.gridContent}>
                     <Badge 
                         badgeStyle={styles.badges}
-                        status="success" // primary, error
+                        status={(data.type==1)? "success":"primary"} //"success" // primary, error
                         value={
                             <Text style={styles.badgeText}> {data.type_name} </Text>
                         } />
@@ -47,7 +51,9 @@ const CardList = ({data={}}) => {
                 </View>
 
                 <TouchableOpacity
-                 onPress={onViewDocument}>
+                 onPress={() => {
+                        navigation.push('DocumentViewScreen',data) 
+                    }}>
                     <Text 
                         style={styles.textTitle}
                         ellipsizeMode='tail' 
@@ -67,7 +73,7 @@ const CardList = ({data={}}) => {
                     </View>
                     <View style={styles.gridContent}>
                         <Icon
-                                name='building-o'
+                                name='user-o'
                                 size={13}
                                 iconStyle={styles.iconSub}
                                 type='font-awesome'/>
