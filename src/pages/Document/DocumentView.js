@@ -9,7 +9,10 @@ import {
     View,
     TouchableOpacity,
     Dimensions,
-    StatusBar
+    StatusBar,
+    LayoutAnimation, 
+    Platform, 
+    UIManager
 } from 'react-native'
 import {
     Icon
@@ -18,12 +21,21 @@ import {
 const DocumentViewScreen = ({navigation, route}) => {
     const {number, title, id, slug } = route.params;
     const WindowHeight = Dimensions.get("window").height;
+    const [expanded, setExpanded] = React.useState(false)
+    const metadata = route.params;
 
     const onBackPage = () =>{
         navigation.goBack()
     }
 
+    if (Platform.OS === 'android') {
+        UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
 
+    const onToggleExpand=()=>{
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setExpanded(!expanded)
+      }
 
     useEffect(() => {
        //console.log(id, slug)
@@ -47,9 +59,7 @@ const DocumentViewScreen = ({navigation, route}) => {
             }}>
                 <ScrollView>
                     <TouchableOpacity
-                        onPress={()=>{
-                            navigation.push("DocumentMetaScreen",route.params)
-                        }}>
+                        onPress={ onToggleExpand }>
                         <View style={styles.cardInfo}>
                             <View style={styles.blockLeft}>
                                 <Text style={styles.textTitile}>Info</Text>
@@ -61,15 +71,69 @@ const DocumentViewScreen = ({navigation, route}) => {
                             </View>
                             <View style={styles.blockRight}>
                                 <Icon
-                                    name='chevron-right'
+                                    name={expanded ? 'chevron-down' : 'chevron-right' }
                                     type='font-awesome'
                                     color='#7f8c8d'/>
                             </View>
                         </View>
                     </TouchableOpacity>
-                    
-                    <Text style={[styles.textTitile,{ paddingLeft:15, marginBottom:10, marginTop:15}]}>Attechment</Text>
+                    {
+                        expanded ? 
+                            <View style={styles.expandBox}>
+                                <View style={styles.containerItem}>
+                                    <Text style={styles.textLabel}>DESCRIPTION</Text>
+                                    <Text style={styles.textLabel}>VALUE</Text>
+                                </View>
 
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Number</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.number}</Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Type</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.type_name}</Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Version</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.version}</Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Effective Date</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.effective_date}</Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Expired Date</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.expired_date}</Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Tags</Text>
+                                    <Text style={styles.textLabelValue}>
+                                        {(metadata.tags) ? metadata.tags.join(', ') : ''}
+                                    </Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Categories</Text>
+                                    <Text style={styles.textLabelValue}>
+                                        {(metadata.categories) ? metadata.categories.join(', ') : ''}
+                                    </Text>
+                                </View>
+
+                                <View style={styles.containerItemData}>
+                                    <Text style={styles.textLabelData}>Last Update</Text>
+                                    <Text style={styles.textLabelValue}>{metadata.last_update}</Text>
+                                </View>
+                            </View> 
+                        : null
+                    }
+
+                    <Text style={[styles.textTitile,{ paddingLeft:15, marginBottom:10, marginTop:15}]}>Attechment</Text>
+                    
                     <TouchableOpacity>
                         <View style={styles.cardInfo}>
                             <View style={styles.blockLeft}>

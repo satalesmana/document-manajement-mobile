@@ -37,7 +37,7 @@ const MainScreen = () => {
 
 const Router = () => {
     return (
-        <Stack.Navigator initialRouteName="Splash" >
+        <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="MainScreen" component={MainScreen}  options={{ headerShown:false }}/>
             <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown:false }}/>
             <Stack.Screen name="SliderScreen" component={SliderScreen} options={{ headerShown:false }}/>

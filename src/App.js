@@ -13,7 +13,7 @@ import { createStore } from 'redux';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist:['configReducer','accountReducer']
+    whitelist:['configReducer','accountReducer','historyReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

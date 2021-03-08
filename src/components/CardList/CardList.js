@@ -4,23 +4,30 @@ import {
     Text,
     TouchableOpacity
 } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './style'
 import { Icon, Badge } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
+import {
+    setActView
+} from '../../actions'
 
 const CardList = ({data={}}) => {
+    const dispatch        = useDispatch();
     const navigation = useNavigation();
+    const { actView, actSearch} = useSelector(state=>state.historyReducer)
 
-    // const onViewDocument = (data) =>{
-    //     console.log(data)
-    //     navigation.navigate('DocumentViewScreen')
-    // }
+    const onViewDocument = (data) =>{
+        navigation.push('DocumentViewScreen',data)
+
+        dispatch(setActView(data))
+    }
 
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={
                 () => {
-                    navigation.push('DocumentViewScreen',data)
+                    onViewDocument(data)
                 }}>
                 <View style={[
                         styles.boxIcon, 
@@ -52,7 +59,8 @@ const CardList = ({data={}}) => {
 
                 <TouchableOpacity
                  onPress={() => {
-                        navigation.push('DocumentViewScreen',data) 
+                        onViewDocument(data)
+                        //navigation.push('DocumentViewScreen',data) 
                     }}>
                     <Text 
                         style={styles.textTitle}

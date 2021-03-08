@@ -17,7 +17,14 @@ import {
 
     SET_RELATED_DOKUMEN,
     RESET_RELATED_DOKUMEN,
-    ADD_RELATED_DOKUMEN
+    ADD_RELATED_DOKUMEN,
+
+    SET_ACT_VIEW,
+    RESET_ACT_VIEW,
+
+    SET_ACT_SEARCH,
+    RESET_ACT_SEARCH,
+    DELETE_ACT_SEARCH
 } from './types'
 
 export const setForm = (inputType, value) =>{
@@ -49,3 +56,9 @@ export const addPublicDocument = (publicdokumen) =>  { return { type:ADD_PUBLIC_
 export const setRelatedDocument = (relatedDokumen) => { return { type:SET_RELATED_DOKUMEN, relatedDokumen }}
 export const addRelatedDocument = (relatedDokumen) => { return { type:ADD_RELATED_DOKUMEN, relatedDokumen }}
 export const resetRelatedDocument = () => { return { type:RESET_RELATED_DOKUMEN }}
+
+export const setActView = (actView)=> {return {type:SET_ACT_VIEW, actView}}
+export const resetActView = ()=> {return {type:RESET_ACT_VIEW}}
+export const setActSearch = (actSearch) => {return { type:SET_ACT_SEARCH, data:actSearch}}
+export const resetActSearch = () => {return { type:RESET_ACT_SEARCH}}
+export const deleteActSearch = (key) => {return { type:DELETE_ACT_SEARCH, key: key}}

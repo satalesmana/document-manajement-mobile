@@ -1,5 +1,7 @@
 import configReducer from './config'
 import accountReducer from './account'
+import historyReducer from './history'
+
 import {
     mydokumenReducer,
     favouriteDokumenReducer,
@@ -13,5 +15,6 @@ export {
     mydokumenReducer,
     favouriteDokumenReducer,
     publicDokumenReducer,
-    relatedDokumenReducer
+    relatedDokumenReducer,
+    historyReducer
 }

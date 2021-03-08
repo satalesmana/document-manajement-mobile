@@ -1,127 +1,176 @@
 import React from 'react'
 import styles from './style'
+import { Icon, Button } from 'react-native-elements'
+import { CardBox } from '../../components'
+import { useSelector, useDispatch } from 'react-redux'
 import { 
-    SafeAreaView,
-    ScrollView,
     Text, 
     View,
-    Button,
-    TextInput
+    SafeAreaView,
+    TextInput,
+    StatusBar,
+    ScrollView,
+    TouchableOpacity
 } from 'react-native'
-import {Picker} from '@react-native-picker/picker'
-import { Appbar } from 'react-native-paper';
-import { Avatar, Badge, Icon } from 'react-native-elements'
-import DateTimePicker from '@react-native-community/datetimepicker';
+import {
+    resetActView,
+    setActSearch,
+    resetActSearch,
+    deleteActSearch
+} from '../../actions'
 
 const SearchSelectiontScreen = ({navigation}) => {
-    const [text, setText] = React.useState('');
-    const [selectedValue, setSelectedValue] = React.useState("");
-    const [show, setShow] = React.useState(false);
-    const [date, setDate] = React.useState(new Date(1598051730000));
+    const dispatch        = useDispatch();
+    const { actView, actSearch} = useSelector(state=>state.historyReducer)
 
+    const [searchString,setSearchString] = React.useState('')
 
-    const onBackPage = () =>{
+    const descHist = actView.sort(function(a,b){
+        return b.key - a.key;
+    })
+    
+    const descSearchHist = actSearch.sort(function(a,b){
+        return b.key - a.key;
+    })
+
+    const onPressBack = () =>{
         navigation.goBack()
     }
 
-    const showDatepicker = () => {
-        setShow(true);
+    const onClearHistView = () =>{
+        dispatch(resetActView())
     }
 
-    const onChange = (event, selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(Platform.OS === 'ios');
-            setDate(currentDate);
+    const onPresClearAllSearch = () =>{
+        dispatch(resetActSearch())
     }
 
-    const onSearchPress = () => {
-        navigation.navigate('SearchResultScreen')
+    const onPresSearchBtn = () =>{
+        dispatch(setActSearch(searchString))
+        navigation.push('SearchResultScreen',{
+            keyword: searchString
+        })
+        setSearchString('')
+    }
+
+    const onDeleteItemSearch = (key) => {
+        dispatch(deleteActSearch(key))
+    }
+
+    const ListSearchHistory = ({data={}}) =>{
+        return <View style={styles.historyList}>
+                <View style={{ flexDirection:'row'}}>
+                    <Icon
+                        name="clock-o"
+                        color="#ababab"
+                        type="font-awesome"/>
+                        <TouchableOpacity  onPress={()=>{
+                            navigation.push("SearchResultScreen",{
+                                keyword:data.name
+                            })
+                        }}>
+                            <Text 
+                                style={{ paddingLeft:15, width:300 }}
+                                ellipsizeMode='tail' 
+                                numberOfLines={1}>
+                                    {data.name}
+                            </Text>
+
+                        </TouchableOpacity>
+                    
+                </View>
+
+                <View style={{ justifyContent:'center' }}>
+                    <Icon
+                        name="trash"
+                        type="font-awesome"
+                        color="#ababab"
+                        onPress={()=>onDeleteItemSearch(data.key)}
+                        size={15}/>
+                </View>
+            </View>
     }
 
     return (
-        <SafeAreaView>
-            <Appbar.Header dark={false} style={styles.appbarLight}>
-                <Appbar.BackAction onPress={onBackPage} />
-                <Appbar.Content title="Selection Form"/>
-            </Appbar.Header>
+        <SafeAreaView style={styles.searchContainer}>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <ScrollView>
+                <View style={styles.contanierHeader}>
+                    <View style={{ width:40 }}>
+                        <Icon
+                            name='arrow-left'
+                            type='font-awesome'
+                            color='#424242'
+                            size={20}
+                            onPress={onPressBack}/>
+                    </View>
+                    
 
-            <ScrollView style={styles.container}>
+                    <View style={styles.searchSection}>
+                        <Icon 
+                            style={styles.searchIcon} 
+                            name='search'
+                            type="font-awesome"
+                            size={20} 
+                            color="#424242"/>
 
-                <TextInput 
-                    placeholder="Document Name"
-                    value={text}
-                    style={styles.input}
-                    onChangeText={text => setText(text)}/>
-
-                <Text style={styles.magin20}>Departments</Text>
-                <Picker
-                    style={styles.input}
-                    selectedValue={selectedValue}
-                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
-                        <Picker.Item label="Finance" value="Finance" />
-                        <Picker.Item label="JavaScript" value="js" />
-                </Picker>
-
-                
-                <Text style={styles.magin20}>Effective Date</Text>
-                <View style={styles.inputContainerGroup}>
-                    <TextInput 
-                        placeholder="Effective Date"
-                        editable = {false}
-                        value={date.toString()}
-                        style={styles.inputGroup}
-                        onChangeText={text => setText(text)}/>
-                    <Icon
-                        containerStyle={styles.blockIcon}
-                        name='calendar'
-                        type='font-awesome'
-                        color='#643d91'
-                        onPress={showDatepicker} />
-                    <Icon
-                        containerStyle={styles.blockIcon}
-                        name='minus-circle'
-                        type='font-awesome'
-                        color='#e65a5a'/>
-                </View>
-
-                <Text style={styles.magin20}>Experied Date</Text>
-                <View style={styles.inputContainerGroup}>
-                    <TextInput 
-                        placeholder="Experied Date"
-                        editable = {false}
-                        value={date.toString()}
-                        style={styles.inputGroup}
-                        onChangeText={text => setText(text)}/>
-                    <Icon
-                        containerStyle={styles.blockIcon}
-                        name='calendar'
-                        type='font-awesome'
-                        color='#643d91'
-                        onPress={showDatepicker} />
-                    <Icon
-                        containerStyle={styles.blockIcon}
-                        name='minus-circle'
-                        type='font-awesome'
-                        color='#e65a5a'/>
-                </View>
-
-                <View style={styles.magin20}>
-                    <Button
-                        onPress={onSearchPress }
-                        title="Start Search" /> 
+                        <TextInput
+                            style={styles.inputSearch}
+                            placeholder="Type something"
+                            value={searchString}
+                            onChangeText={(value) => {
+                                setSearchString(value)
+                            }}
+                            underlineColorAndroid="transparent"/>
+                        
+                        <Button
+                            onPress={onPresSearchBtn}
+                            title="Search" />
+                    </View>
                 </View>
                 
-                {show && (
-                    <DateTimePicker
-                        testID="dateTimePicker"
-                        value={date}
-                        mode={'date'}
-                        is24Hour={true}
-                        display="default"
-                        onChange={onChange}/>
-                )}
+                {
+                    (typeof(actView)  !== undefined && actView.length > 0) ? 
+                        <View style={{ marginTop:15 }}>
+                            <View style={styles.containerHistoryTitle}>
+                                <Text style={styles.textTitleSearch}>Terakhir dilihat</Text>
+                                <TouchableOpacity
+                                onPress={onClearHistView}>
+                                    <Text style={styles.textTitleSearchDanger}>Hapus Semua</Text>
+                                </TouchableOpacity>
+                            </View>
+                            
+                            <ScrollView horizontal={true}>
+                                {   
+                                    descHist.map((item,index)=>(
+                                        <CardBox key={index} data={item}/>
+                                    ))
+                                }
+                            </ScrollView>
+                        </View> 
+                    : null
+                }
 
-                </ScrollView>
+                {
+                    (typeof(actSearch)  !== undefined && actSearch.length > 0) ? 
+                        <View>
+                            <View style={styles.containerHistoryTitle}>
+                                <Text style={styles.textTitleSearch}>Terakhir dicari</Text>
+                                <TouchableOpacity
+                                    onPress={onPresClearAllSearch}>
+                                    <Text style={styles.textTitleSearchDanger}>Hapus Semua</Text>
+                                </TouchableOpacity>
+                            </View>
+                            {
+                                descSearchHist.map((item,index)=>(
+                                    <ListSearchHistory key={index} data={item}/>
+                                ))
+                            }
+                        </View>
+                    : null
+                }
+                
+            </ScrollView>
         </SafeAreaView>
     )
 }

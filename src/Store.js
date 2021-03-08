@@ -5,7 +5,8 @@ import {
     mydokumenReducer,
     favouriteDokumenReducer,
     publicDokumenReducer,
-    relatedDokumenReducer
+    relatedDokumenReducer,
+    historyReducer
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     mydokumenReducer:mydokumenReducer,
     favouriteDokumenReducer:favouriteDokumenReducer,
     publicDokumenReducer:publicDokumenReducer,
-    relatedDokumenReducer:relatedDokumenReducer
+    relatedDokumenReducer:relatedDokumenReducer,
+    historyReducer:historyReducer
 
 })
 

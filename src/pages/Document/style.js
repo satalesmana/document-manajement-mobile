@@ -156,6 +156,12 @@ const styles = StyleSheet.create({
         color:TEXT_PRIMARY,
         fontWeight:'bold',
         fontSize:16
+    },
+    expandBox:{
+        backgroundColor:'white', 
+        paddingLeft:20, 
+        paddingRight:20,
+        paddingBottom:15
     }
 })
 
