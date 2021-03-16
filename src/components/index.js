@@ -6,7 +6,8 @@ import {
     TaskList, 
     CardList, 
     CardBox,
-    CardListSkeleton
+    CardListSkeleton,
+    TaskListSkeleton
 } from './CardList'
 
 export { 
@@ -17,5 +18,6 @@ export {
     TaskList,
     CardList,
     CardBox,
-    CardListSkeleton
+    CardListSkeleton,
+    TaskListSkeleton
 }

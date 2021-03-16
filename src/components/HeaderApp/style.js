@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     },
     roudedContainer:{
         minHeight:windowHeight*0.4,
-        borderBottomLeftRadius:40,
-        borderBottomRightRadius:40,
+        borderBottomLeftRadius:10,
+        borderBottomRightRadius:10,
     },
     containerCenter:{
         flex: 1,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         marginLeft: (windoWidth * 0.1) -15,
         marginRight: (windoWidth * 0.1) -15,
         marginBottom:-30,
-        backgroundColor:'#F1F9FF',
+        backgroundColor:'white',
         shadowOffset:{
             width:0,
             height:1

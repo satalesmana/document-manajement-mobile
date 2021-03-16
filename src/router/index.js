@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components/';
+import { setI18nConfig } from '../translations'
 import { 
     HomeScreen,
     AccountScreen,
@@ -17,13 +18,17 @@ import {
     SearchResultScreen,
     SetupScreen,
     DocumentViewScreen,
-    DocumentMetaScreen
+    DocumentMetaScreen,
+    TaskdetailScreen,
+    ExaminationScreen
  } from '../pages';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainScreen = () => {
+    setI18nConfig()
+
     return (
         <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
             <Tab.Screen name="Home" component={HomeScreen} />
@@ -48,6 +53,8 @@ const Router = () => {
             <Stack.Screen name="SearchSelectiontScreen" component={SearchSelectiontScreen} options={{headerShown:false}}/>
             <Stack.Screen name="SearchResultScreen" component={SearchResultScreen} options={{headerShown:false}}/>
             <Stack.Screen name="DocumentMetaScreen" component={DocumentMetaScreen} options={{headerShown:false}} />
+            <Stack.Screen name="TaskdetailScreen" component={TaskdetailScreen} options={{headerShown:false}} />
+            <Stack.Screen name="ExaminationScreen" component={ExaminationScreen} options={{headerShown:false}}/>
         </Stack.Navigator>
     )
 }

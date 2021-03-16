@@ -1,7 +1,7 @@
 import React, { useEffect} from 'react'
 import { Appbar } from 'react-native-paper';
 import styles from './style'
-
+import { Imgpaper } from '../../assets'
 import { 
     SafeAreaView, 
     ScrollView, 
@@ -12,7 +12,8 @@ import {
     StatusBar,
     LayoutAnimation, 
     Platform, 
-    UIManager
+    UIManager,
+    Image
 } from 'react-native'
 import {
     Icon
@@ -45,7 +46,7 @@ const DocumentViewScreen = ({navigation, route}) => {
         <SafeAreaView>
             <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
-            <Appbar.Header dark={false} style={styles.appbarLight}>
+            <Appbar.Header dark={true} style={styles.appbarLight}>
                 <Appbar.BackAction onPress={onBackPage} />
                 <Appbar.Content 
                     title="Document View"
@@ -132,7 +133,7 @@ const DocumentViewScreen = ({navigation, route}) => {
                         : null
                     }
 
-                    <Text style={[styles.textTitile,{ paddingLeft:15, marginBottom:10, marginTop:15}]}>Attechment</Text>
+                    {/* <Text style={[styles.textTitile,{ paddingLeft:15, marginBottom:10, marginTop:15}]}>Attechment</Text>
                     
                     <TouchableOpacity>
                         <View style={styles.cardInfo}>
@@ -170,13 +171,37 @@ const DocumentViewScreen = ({navigation, route}) => {
                                     color='#7f8c8d'/>
                             </View>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
 
                     <View style={styles.DocumentContainer}>
-                        <Text>ini display dokumen wit html view</Text>
-                        <Text>ini display dokumen wit html view lorem ipsum 
-                            ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum 
-                        </Text>
+                        <View style={{
+                            shadowColor: "#000",
+                            shadowOffset: {
+                                width: 0,
+                                height: 2,
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 3.84,
+                            elevation: 2,
+                            // borderBottomLeftRadius:5,
+                            // borderBottomRightRadius:5
+                        }}>
+                            <Image source={Imgpaper} style={styles.headerContent}/>
+                            <View style={{
+                                backgroundColor:'white',
+                                paddingLeft:10,
+                                paddingRight:10,
+                                paddingBottom:10,
+                                borderBottomLeftRadius:5,
+                                borderBottomRightRadius:5
+                            }}>
+                                <Text>ini display dokumen wit html view</Text>
+                                <Text>ini display dokumen wit html view lorem ipsum 
+                                    ipsum lorem ipsum  lorem ipsum  lorem ipsum  lorem ipsum 
+                                </Text>
+                            </View>
+                        </View>
+                        
                     </View>
 
                     

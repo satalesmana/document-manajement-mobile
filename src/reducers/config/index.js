@@ -1,7 +1,8 @@
 import { 
   SET_FORM,
   RESET_CONFIG,
-  SET_BASEURL
+  SET_BASEURL,
+  SET_LANGUAGE
 } from '../../actions/types';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
     port:''
   },
   baseUrl:'',
-  //firstTime:true
+  Mylanguage:'en'
 }
 
 const configReducer = (state = initialState, action) => {
@@ -41,11 +42,11 @@ const configReducer = (state = initialState, action) => {
         ...state, 
         baseUrl: baseUrl
       };
-    // case SET_FIRSTIME:
-    //   return{
-    //     ...state, 
-    //     firstTime: false
-    //   };
+    case SET_LANGUAGE:
+      return{
+        ...state, 
+        Mylanguage: action.Mylanguage
+      };
     default:
       return state;
   }

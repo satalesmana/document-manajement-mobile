@@ -1,0 +1,11 @@
+{
+    "acn_header_signout":"Sign Out",
+    "acn_label_signout": "Exit from application",
+    "acn_lang_desc":"According to system configuration",
+    "acn_lang_header":"Language",
+    "acn_changepas_header":"Change Password",
+    "acn_changepas_desc":"Modify your security password",
+    "acn_hint_oldpas":"Old password",
+    "acn_hint_newpas":"New password",
+    "acn_btn_changepas":"Send change password"
+}

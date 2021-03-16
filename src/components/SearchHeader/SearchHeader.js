@@ -4,6 +4,7 @@ import styles from './style'
 import { Appbar } from 'react-native-paper'
 import { Picker } from '@react-native-picker/picker'
 import { useSelector } from 'react-redux'
+import { AvatarDefault } from '../../assets'
 import { 
     TEXT_SECONDARY
 } from '../../utils'
@@ -20,7 +21,7 @@ import {
 
 const SearchHeader = ({placeHolder, navigation, onSetSortData}) => { 
     const { user } = useSelector(state=>state.accountReducer)
-    const avatarUser = (user.profile_photo_url) ? user.profile_photo_url : 'https://randomuser.me/api/portraits/men/41.jpg'
+    const avatarUser = (user.profile_photo_url) ? {uri:user.profile_photo_url} : AvatarDefault
     const [selectedValue, setSelectedValue] = React.useState("title|asc");
 
     const onIconSearchPress = () =>{ navigation.navigate("SearchSelectiontScreen") }
@@ -49,9 +50,7 @@ const SearchHeader = ({placeHolder, navigation, onSetSortData}) => {
                     <View style={styles.avatarBlock}>
                         <Avatar
                             rounded
-                            source={{
-                                uri: avatarUser
-                            }}
+                            source={avatarUser}
                             onPress={onViewProfile}
                             size="small"/>
                         <Badge

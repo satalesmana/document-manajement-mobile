@@ -6,7 +6,7 @@ export const FULL_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     container: {
         padding: 8,
-        margin:10,
+        margin:4,
         backgroundColor: 'white',
         flexDirection: 'row',
         borderRadius: 5,
@@ -15,15 +15,43 @@ const styles = StyleSheet.create({
     containerTask:{
         margin:10,
         shadowColor: '#000',
-        backgroundColor: '#EAF4FE',
+        backgroundColor: 'white',
         height:90,
         borderRadius:50,
         paddingLeft:4,
         paddingRight:15,
         flexDirection: 'row',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
+    },
+    containerTaskSklton:{
+        margin:10,
+        shadowColor: '#000',
+        backgroundColor: 'white',
+        height:90,
+        borderRadius:50,
+        paddingLeft:4,
+        paddingRight:15,
+        flexDirection: 'row',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     },
     boxIcon :{
-        marginTop:-20,
+       // marginTop:-20,
         shadowColor:'#000',
         borderRadius: 3,
         borderColor:'#000',
@@ -97,7 +125,8 @@ const styles = StyleSheet.create({
     textSubDesc:{
         fontSize: 12,
         fontFamily: 'Roboto-Regular'
-    }
+    },
+    
 })
 
 export default styles;

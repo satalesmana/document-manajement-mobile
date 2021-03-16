@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 import { 
     StyleSheet, 
     Text, 
@@ -12,8 +13,14 @@ import {
 } from 'react-native-elements'
 
 const CardBox = ({data={}}) => {
+    const navigation      = useNavigation();
+    const onViewDetail = () =>{
+        navigation.push('DocumentViewScreen',data)
+    }
+
     return (
-        <TouchableOpacity style={styles.cardBoxStyle}>
+        <TouchableOpacity style={styles.cardBoxStyle}
+            onPress={onViewDetail}>
             <View style={{
                 width:"35%"
             }}>

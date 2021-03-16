@@ -1,0 +1,29 @@
+{   
+    "acn_header_signout":"Keluar",
+    "acn_label_signout": "Keluar dari aplikasi",
+    "acn_lang_desc":"Menyesuaikan dengan konfigurasi sistem",
+    "acn_lang_header":"Bahasa",
+    "acn_changepas_header":"Ubah sandi",
+    "acn_changepas_desc":"Lakukan perubahan sandi untuk keamanan",
+    "acn_hint_oldpas":"Sandi sebelumnya",
+    "acn_hint_newpas":"Sandi baru",
+    "acn_btn_changepas":"Kirim perubahan sandi",
+    "acn_label_task":"Tugas",
+    "acn_label_open":"Buka",
+    "acn_label_close":"Tutup",
+    "acn_label_all":"Semua",
+
+    "acs_task_title":"Tugas",
+
+    "acs_taskd_desc":"Deskripsi Tugas",
+    "acs_taskd_priority":"Prioritas",
+    "acs_taskd_duedate":"Batas Waktu",
+    "acs_taskd_type":"Jenis",
+    "acs_taskd_btnattestation":"Proses",
+    "acs_taskd_btnexam":"Mulai Ujian",
+    "acs_taskd_cbkattestation":"Saya menerima dan akan menjalankannya",
+    "acs_taskd_documentlbl":"Dokumen terkait",
+    "acs_taskd_info":"Informasi",
+    "acs_taskd_examinfo":"Maksimal pengerjaan kuis adalah (__EXAM_MAXDURATION__) kuis akan tersimpan saat anda sudah menyelesaikan semua soal",
+    "acs_taskd_btncancel":"Batal"
+}

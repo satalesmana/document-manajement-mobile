@@ -1,0 +1,11 @@
+{   
+    "acn_header_signout":"Keluar",
+    "acn_label_signout": "Keluar dari aplikasi",
+    "acn_lang_desc":"Menyesuaikan dengan konfigurasi sistem",
+    "acn_lang_header":"Bahasa",
+    "acn_changepas_header":"Ubah sandi",
+    "acn_changepas_desc":"Lakukan perubahan sandi untuk keamanan",
+    "acn_hint_oldpas":"Sandi sebelumnya",
+    "acn_hint_newpas":"Sandi baru",
+    "acn_btn_changepas":"Kirim perubahan sandi"
+}

@@ -2,7 +2,8 @@ import { StyleSheet, Dimensions } from 'react-native'
 import {
     TEXT_INPUT_HINT,
     TEXT_PRIMARY,
-    TEXT_SECONDARY
+    TEXT_SECONDARY,
+    APP_PRIMARY
 } from '../../utils'
 
 const windowHeight = Dimensions.get("window").height;
@@ -10,7 +11,7 @@ const windoWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
     appbarLight:{
-        backgroundColor:'white',
+        backgroundColor:APP_PRIMARY,
         paddingTop:20,
         height:78
     },
@@ -40,9 +41,18 @@ const styles = StyleSheet.create({
         width:'10%'
     },
     DocumentContainer:{
-        padding:15,
+        //padding:15,
+        marginTop:15,
         minHeight: windowHeight - 150,
-        backgroundColor:'#80848a'
+        paddingLeft:10,
+        paddingRight:10,
+        
+        //backgroundColor:'#80848a'
+    },
+    headerContent:{
+        width:'100%',
+        height:20,
+        resizeMode: 'cover',
     },
     containerContent:{
         padding:15,

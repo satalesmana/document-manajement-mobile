@@ -6,7 +6,8 @@ import {
     favouriteDokumenReducer,
     publicDokumenReducer,
     relatedDokumenReducer,
-    historyReducer
+    historyReducer,
+    taskReducer
 } from './reducers';
 
 const rootReducer = combineReducers({
@@ -16,8 +17,8 @@ const rootReducer = combineReducers({
     favouriteDokumenReducer:favouriteDokumenReducer,
     publicDokumenReducer:publicDokumenReducer,
     relatedDokumenReducer:relatedDokumenReducer,
-    historyReducer:historyReducer
-
+    historyReducer:historyReducer,
+    taskReducer:taskReducer
 })
 
 //const configureStore = () => createStore(rootReducer);

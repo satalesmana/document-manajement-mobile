@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './style'
+import { Avatar, Icon } from 'react-native-elements';
+import { lang } from '../../translations'
 import { 
     ImgHeaderBg, 
     IconArrowLeft,
-    ImgSplahBg 
+    AvatarDefault 
 } from '../../assets'
-import { Avatar, Icon } from 'react-native-elements';
 import { 
     ImageBackground,
     Text, 
@@ -21,7 +22,7 @@ const HeaderApp = ({navigation}) => {
 
     const { user } = useSelector(state=>state.accountReducer)
     
-    const avatarUser = (user.profile_photo_url) ? user.profile_photo_url : 'https://randomuser.me/api/portraits/men/41.jpg'
+    const avatarUser = (user.profile_photo_url) ? {uri:user.profile_photo_url} : AvatarDefault
     
     return (
         <View style={styles.roudedContainer}>
@@ -36,9 +37,7 @@ const HeaderApp = ({navigation}) => {
                         <Avatar
                             containerStyle={styles.avatarProfile}
                             rounded
-                            source={{
-                                uri:avatarUser,
-                            }}
+                            source={avatarUser}
                             size={75}/>
                         <Text style={styles.title}>{user.name}</Text>
                         <Text style={styles.description}>{user.email}</Text>
@@ -50,24 +49,24 @@ const HeaderApp = ({navigation}) => {
                         name='bell'
                         type='font-awesome'
                         color='#f50'/>
-                    <Text style={styles.textInfo}>Open</Text>
-                    <Text style={styles.textData}>20 Task</Text>
+                    <Text style={styles.textInfo}>{lang("acn_label_open")}</Text>
+                    <Text style={styles.textData}>20 {lang("acn_label_task")}</Text>
                 </View>
                 <View style={styles.blockTask}>
                     <Icon
                         name='list-alt'
                         type='font-awesome'
                         color='#42f54b'/>
-                    <Text style={styles.textInfo}>Close</Text>
-                    <Text style={styles.textData}>20 Task</Text>
+                    <Text style={styles.textInfo}>{lang("acn_label_close")}</Text>
+                    <Text style={styles.textData}>20 {lang("acn_label_task")}</Text>
                 </View>
                 <View style={styles.blockTask}>
                     <Icon
                         name='folder-open'
                         type='font-awesome'
                         color='#0081DF'/>
-                    <Text style={styles.textInfo}>All</Text>
-                    <Text style={styles.textData}>40 Task</Text>
+                    <Text style={styles.textInfo}>{lang("acn_label_all")}</Text>
+                    <Text style={styles.textData}>40 {lang("acn_label_task")}</Text>
                 </View>
             </View>
         </View>

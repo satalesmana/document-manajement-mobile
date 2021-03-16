@@ -8,7 +8,8 @@ import ImgLogoVertical from './ImgLogoVertical.png'
 import headerBg2 from './headerBg2.png'
 import Slide1 from './slide1.png'
 import Slide2 from './slide2.png'
-
+import AvatarDefault from './avatar-default.png'
+import Imgpaper from './ImgPaper.png'
 export { 
     SliderOne, 
     SliderTwo, 
@@ -18,5 +19,7 @@ export {
     ImgHeaderBg, 
     headerBg2,
     Slide1,
-    Slide2
+    Slide2,
+    AvatarDefault,
+    Imgpaper
 };

@@ -29,8 +29,8 @@ import {
 const SetupScreen = ({navigation}) => {
     const { formModel } = useSelector(state=>state.configReducer)
     const dispatch = useDispatch();
-    const [showalert, onsetShowalert] = React.useState(false);
     const [loading, onsetLoading] = React.useState(false);
+    const [showalert, onsetShowalert] = React.useState(false);
     const [alertmessages, onsetAllertmessages] = React.useState('');
   
     const onCancel = () =>{

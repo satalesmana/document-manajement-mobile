@@ -1,0 +1,29 @@
+{
+    "acn_header_signout":"Sign Out",
+    "acn_label_signout": "Exit from application",
+    "acn_lang_desc":"According to system configuration",
+    "acn_lang_header":"Language",
+    "acn_changepas_header":"Change Password",
+    "acn_changepas_desc":"Modify your security password",
+    "acn_hint_oldpas":"Old password",
+    "acn_hint_newpas":"New password",
+    "acn_btn_changepas":"Send change password",
+    "acn_label_task" :"Task",
+    "acn_label_open":"Open",
+    "acn_label_close":"Close",
+    "acn_label_all":"All",
+
+    "acs_task_title":"My Task",
+
+    "acs_taskd_desc":"Task Description",
+    "acs_taskd_priority":"Priority",
+    "acs_taskd_duedate":"Due Date",
+    "acs_taskd_type":"Type",
+    "acs_taskd_btnattestation":"Submit",
+    "acs_taskd_btnexam":"Start Examination",
+    "acs_taskd_cbkattestation":"I accept and will live with it",
+    "acs_taskd_documentlbl":"Related Document",
+    "acs_taskd_info":"Information",
+    "acs_taskd_examinfo":"The maximum duration of the quiz is (__EXAM_MAXDURATION__) the quiz will be submited when you have finished all the questions",
+    "acs_taskd_btncancel":"Cancel"
+}

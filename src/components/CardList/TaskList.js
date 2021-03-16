@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 import styles from './style'
 import { Icon } from 'react-native-elements';
 
-const TaskList = ({status}) => {
+const TaskList = ({data}) => {
     const IconStatus = [
         {name:'bullhorn', color:'#05f725', label:'Low'},
         {name:'info-circle', color:'#37C6F7', label:'Medium'},
@@ -13,13 +13,13 @@ const TaskList = ({status}) => {
 
     return (
         <View style={styles.containerTask}>
-            <View style={styles.blockLeft}>
+            <View style={[styles.blockLeft, { justifyContent:'center', alignItems:'center'}]}>
                 <Icon
                     reverse
-                    name={IconStatus[status].name}
+                    name={IconStatus[data.priority].name}
                     type='font-awesome'
                     iconStyle={{
-                        color:IconStatus[status].color
+                        color:IconStatus[data.priority].color
                     }}
                     color='#CAE6FC'
                     size={30}/>
@@ -28,8 +28,8 @@ const TaskList = ({status}) => {
                 <Text 
                     style={styles.textTitle}
                     ellipsizeMode='tail' 
-                    numberOfLines={2}>
-                        Task Name
+                    numberOfLines={1}>
+                        {data.title}
                 </Text>
                 <View style={styles.gridContentTask}>
                     <View style={styles.gridContent}>
@@ -38,11 +38,13 @@ const TaskList = ({status}) => {
                             size={13}
                             iconStyle={styles.iconSub}
                             type='font-awesome'/>
-                        <Text style={styles.textSub}>20 Agt 2022</Text>
+                        <Text style={styles.textSub}>
+                            {data.due_date}
+                        </Text>
                     </View>
                     <View style={styles.gridContent}>
                         <Icon
-                                name='user-circle-o'
+                                name='info-circle'
                                 size={13}
                                 iconStyle={styles.iconSub}
                                 type='font-awesome'/>
@@ -50,7 +52,7 @@ const TaskList = ({status}) => {
                                 style={styles.textSub}
                                 ellipsizeMode='tail' 
                                 numberOfLines={1}>
-                                    Mr. Mahmudin
+                                    {data.type_name}
                             </Text>
                     </View>
 
@@ -59,7 +61,7 @@ const TaskList = ({status}) => {
                     style={styles.textSubDesc}
                     ellipsizeMode='tail' 
                     numberOfLines={2}>
-                        Task Description loremp ipsum loremp ipsum loremp ipsum loremp ipsum loremp ipsum loremp ipsum loremp ipsum 
+                        {data.description}
                 </Text>
             </View>
         </View>

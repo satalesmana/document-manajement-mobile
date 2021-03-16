@@ -2,6 +2,8 @@ export const SET_FORM = 'SET_FORM';
 export const SET_BASEURL = 'SET_BASEURL';
 export const RESET_CONFIG = 'RESET_CONFIG';
 export const SET_ACCOUNT = 'SET_ACCOUNT';
+export const RESET_ACCOUNT = 'RESET_ACCOUNT';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export const SET_MYDOKUMEN = 'SET_MYDOKUMEN';
 export const RESET_MYDOKUMEN = 'RESET_MYDOKUMEN';
@@ -26,5 +28,8 @@ export const SET_ACT_SEARCH = 'SET_ACT_SEARCH';
 export const RESET_ACT_SEARCH = 'RESET_ACT_SEARCH';
 export const DELETE_ACT_SEARCH = 'DELETE_ACT_SEARCH';
 
+export const SET_TASK= 'SET_TASK';
+export const ADD_TASK = 'ADD_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
 
 
