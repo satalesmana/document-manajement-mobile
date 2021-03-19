@@ -1,7 +1,10 @@
 import configReducer from './config'
 import accountReducer from './account'
 import historyReducer from './history'
-import taskReducer from './task'
+import {
+    taskReducer,
+    examReducer
+} from './task'
 
 import {
     mydokumenReducer,
@@ -18,5 +21,6 @@ export {
     publicDokumenReducer,
     relatedDokumenReducer,
     historyReducer,
-    taskReducer
+    taskReducer,
+    examReducer
 }

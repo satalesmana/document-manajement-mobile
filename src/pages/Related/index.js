@@ -3,6 +3,7 @@ import { SearchHeader } from '../../components/SearchHeader'
 import { CardList, CardListSkeleton } from '../../components/CardList'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios'
+import { lang } from '../../translations'
 import {
     setRelatedDocument,
     addRelatedDocument,
@@ -21,7 +22,7 @@ import {
 
 
 const RelatedScreen = ({navigation}) => {
-    let placeHolderSearch = "Search Document Related"
+    let placeHolderSearch = lang("lbl_serc_rel")
     const WindowHeight    = Dimensions.get('window').height;
     const dispatch        = useDispatch();
     const {relatedDokumen} = useSelector(state=>state.relatedDokumenReducer)
@@ -174,6 +175,7 @@ const RelatedScreen = ({navigation}) => {
 
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
+                    <View style={{margin:15}}/>
                 </ScrollView>
             </View>
         </View>

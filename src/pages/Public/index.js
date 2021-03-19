@@ -3,6 +3,7 @@ import { SearchHeader } from '../../components/SearchHeader'
 import axios from 'axios'
 import { CardList, CardListSkeleton } from '../../components/CardList'
 import { useSelector, useDispatch } from 'react-redux'
+import { lang } from '../../translations'
 import {
     setPublicDocument,
     resetPublicDocument,
@@ -20,7 +21,7 @@ import {
 } from 'react-native'
 
 const PublicScreen = ({navigation}) => {
-    let placeHolderSearch = "Search Document Publick"
+    let placeHolderSearch = lang('lbl_serc_pub')
     const WindowHeight    = Dimensions.get('window').height;
     const dispatch        = useDispatch();
     const {publicdokumen} = useSelector(state=>state.publicDokumenReducer)
@@ -174,6 +175,7 @@ const PublicScreen = ({navigation}) => {
 
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
+                    <View style={{margin:15}}/>
                 </ScrollView>
             </View>
             

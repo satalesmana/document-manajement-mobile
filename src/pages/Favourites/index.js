@@ -3,6 +3,7 @@ import axios from 'axios'
 import { SearchHeader } from '../../components/SearchHeader'
 import { CardList, CardListSkeleton } from '../../components/CardList'
 import { useSelector, useDispatch } from 'react-redux'
+import { lang } from '../../translations'
 import {
     setFavouriteDocument,
     addFavouritekumen,
@@ -21,7 +22,7 @@ import {
 
 const FavouritesScreen = ({navigation}) => {
     const WindowHeight = Dimensions.get('window').height;
-    let placeHolderSearch = "Search Favourites"
+    let placeHolderSearch = lang("lbl_serc_fav")
     const dispatch        = useDispatch();
     const {favouritedokumen}= useSelector(state=>state.favouriteDokumenReducer)
     const { baseUrl }     = useSelector(state=>state.configReducer);
@@ -178,7 +179,7 @@ const FavouritesScreen = ({navigation}) => {
 
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
-                    
+                    <View style={{margin:15}}/>
                 </ScrollView>
             </View>
         </View>

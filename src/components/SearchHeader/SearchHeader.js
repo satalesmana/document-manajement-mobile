@@ -5,6 +5,7 @@ import { Appbar } from 'react-native-paper'
 import { Picker } from '@react-native-picker/picker'
 import { useSelector } from 'react-redux'
 import { AvatarDefault } from '../../assets'
+import { lang } from '../../translations'
 import { 
     TEXT_SECONDARY
 } from '../../utils'
@@ -69,12 +70,12 @@ const SearchHeader = ({placeHolder, navigation, onSetSortData}) => {
                     style={styles.inputSelect}
                     selectedValue={selectedValue}
                     onValueChange={(itemValue, itemIndex) => onSortData(itemValue)}>
-                        <Picker.Item label="Effective Date (ASC)" value="effective_date|asc" />
-                        <Picker.Item label="Effective Date (DESC)" value="effective_date|desc" />
-                        <Picker.Item label="Document Number (ASC)" value="number|asc" />
-                        <Picker.Item label="Document Number (DESC)" value="number|desc" />
-                        <Picker.Item label="Document Name (ASC)" value="title|asc" />
-                        <Picker.Item label="Document Name (DESC)" value="title|desc" />
+                        {/* <Picker.Item label={lang("acs_sort_asc_effdate")} value="effective_date|asc" />
+                        <Picker.Item label={lang("acs_sort_dsc_effdate")} value="effective_date|desc" /> */}
+                        <Picker.Item label={lang("acs_sort_asc_docnum")}  value="number|asc" />
+                        <Picker.Item label={lang("acs_sort_dsc_docnum")} value="number|desc" />
+                        <Picker.Item label={lang("acs_sort_asc_docname")} value="title|asc" />
+                        <Picker.Item label={lang("acs_sort_dsc_docname")} value="title|desc" />
                 </Picker>
                 
             </Appbar.Header>

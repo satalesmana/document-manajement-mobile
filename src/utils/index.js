@@ -12,6 +12,7 @@ export const NAV_SECONDARY ='#a3a3a3';
 
 export const BTN_PRIMARY = '#128643';
 export const BTN_SENDONDARY = '#c90014';
+export const BTN_INFO = '#1e2075';
 
 export const FONT_FAMILY_PRIMARY = 'Open Sans';
 

@@ -25,5 +25,31 @@
     "acs_taskd_documentlbl":"Related Document",
     "acs_taskd_info":"Information",
     "acs_taskd_examinfo":"The maximum duration of the quiz is (__EXAM_MAXDURATION__) the quiz will be submited when you have finished all the questions",
-    "acs_taskd_btncancel":"Cancel"
+    "acs_taskd_btncancel":"Cancel",
+
+    "acs_exam_title":"Quiz",
+    "acs_exam_btnnext":"Next",
+    "acs_exam_btnprev":"Previous",
+    "acs_exam_question":"Question",
+    "acs_exam_answer":"Answer",
+    "acs_exam_btnfinish":"Finish",
+    "acs_exam_dlgfinish":"Thank you for doing the quiz correctly, click OK to end the quiz",
+
+    "acs_btmnav_Home":"Home",
+    "acs_btmnav_Favourites":"Favourites",
+    "acs_btmnav_Public":"Public",
+    "acs_btmnav_Related":"Related",
+    "acs_btmnav_MyTask":"Task",
+
+    "acs_sort_asc_effdate":"(A-Z) Effective Date ",
+    "acs_sort_dsc_effdate":"(Z-A) Effective Date",
+    "acs_sort_asc_docnum":"(A-Z) Document Number",
+    "acs_sort_dsc_docnum":"(Z-A) Document Number",
+    "acs_sort_asc_docname":"(A-Z) Document Name",
+    "acs_sort_dsc_docname":"(Z-A) Document Name",
+
+    "lbl_serc_home":"Search Mydocument",
+    "lbl_serc_fav":"Search Favourites",
+    "lbl_serc_pub":"Search Publick Document",
+    "lbl_serc_rel":"Search Related Document"
 }

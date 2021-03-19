@@ -48,6 +48,8 @@ const TaskdetailScreen = ({navigation, route}) => {
     const [alertmessages, onsetAllertmessages] = React.useState('');
     const state  = { scrollY: new Animated.Value(0) }
     const [isExamdialog, setExamdialog] = React.useState(false)
+    const [taskSelected, setTaskSelected] = React.useState({})
+    const [taskDuration, setTaskDuration] = React.useState(0)
 
     axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
     axios.defaults.headers.common['Accept'] = 'application/json';
@@ -104,16 +106,24 @@ const TaskdetailScreen = ({navigation, route}) => {
 
     const onStartExamination = (task) =>{
         onsetShowalert(true)
-        setExamdialog(true)
-        let info = lang("acs_taskd_examinfo")
-                    .replace("__EXAM_MAXDURATION__", task.document.exam_max_duration)
-        onsetAllertmessages(info)
+
+        axios.get(baseUrl+'/api/task/exam/'+ task.id)
+            .then(r=>{
+                setTaskDuration(r.data.exam_max_duration)
+                setTaskSelected(task)
+                let info = lang("acs_taskd_examinfo")
+                .replace("__EXAM_MAXDURATION__", r.data.exam_max_duration)
+                onsetAllertmessages(info)
+                setExamdialog(true)
+            })
+        
     }
 
     const onConfirmdialog = () =>{
         onsetShowalert(false)
         if(isExamdialog){
-            navigation.push("ExaminationScreen")
+            let params = {...taskSelected,...{"duration":taskDuration}}
+            navigation.push("ExaminationScreen",params)
         }else
             navigation.goBack()
     }

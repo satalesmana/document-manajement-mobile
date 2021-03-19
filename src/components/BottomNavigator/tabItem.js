@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {lang} from '../../translations'
 import { 
   NAV_SECONDARY, 
   NAV_PRIMARY 
@@ -28,17 +29,19 @@ const TabItem = ({isFocused, onPress, onLongPress, label }) => {
       
       if(label === "Related") return isFocused ? <IconRelatedActive/> : <IconRelatedInactive />
       
-      if(label === "My Task") return isFocused ? <IconTaskActive/> : <IconTaskInactive />      
+      if(label === "MyTask") return isFocused ? <IconTaskActive/> : <IconTaskInactive />      
 
       return <IconHomInactive />
   }
+
   return (
     <TouchableOpacity
       onPress={onPress}
       onLongPress={onLongPress}
       style={styles.container}>
         <Icon />
-        <Text style={styles.text(isFocused)}>{label}</Text>
+        
+        <Text style={styles.text(isFocused)}>{lang("acs_btmnav_"+label)}</Text>
     </TouchableOpacity>
   );
 };

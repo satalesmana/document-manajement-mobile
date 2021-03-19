@@ -27,20 +27,19 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const MainScreen = () => {
-    setI18nConfig()
-
     return (
         <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Favourites" component={FavouritesScreen} />
             <Tab.Screen name="Public" component={PublicScreen} />
             <Tab.Screen name="Related" component={RelatedScreen} />
-            <Tab.Screen name="My Task" component={MytaskScreen} />
+            <Tab.Screen name="MyTask" component={MytaskScreen} />
         </Tab.Navigator>
     )
 }
 
 const Router = () => {
+    setI18nConfig()
     return (
         <Stack.Navigator initialRouteName="Splash">
             <Stack.Screen name="MainScreen" component={MainScreen}  options={{ headerShown:false }}/>

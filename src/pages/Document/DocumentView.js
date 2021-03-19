@@ -2,6 +2,8 @@ import React, { useEffect} from 'react'
 import { Appbar } from 'react-native-paper';
 import styles from './style'
 import { Imgpaper } from '../../assets'
+import { Picker } from '@react-native-picker/picker'
+import { lang } from '../../translations'
 import { 
     SafeAreaView, 
     ScrollView, 
@@ -23,6 +25,7 @@ const DocumentViewScreen = ({navigation, route}) => {
     const {number, title, id, slug } = route.params;
     const WindowHeight = Dimensions.get("window").height;
     const [expanded, setExpanded] = React.useState(false)
+    const [selectedVersion, setSelectedVersion] = React.useState(0)
     const metadata = route.params;
 
     const onBackPage = () =>{
@@ -59,6 +62,21 @@ const DocumentViewScreen = ({navigation, route}) => {
                 overflow:'hidden'
             }}>
                 <ScrollView>
+                    <View style={styles.cardInfoVersion}>
+                        <View style={{marginTop:13}}>
+                            <Text style={styles.textTitile}>Versions</Text>
+                        </View>
+                        <View>
+                            <Picker
+                                style={[styles.inputSelect]}
+                                selectedValue={selectedVersion}
+                                onValueChange={(itemValue, itemIndex) => setSelectedVersion(itemValue)}>
+                                    <Picker.Item label={"Ver. 01"}  value="number|asc" />
+                                    <Picker.Item label={"Ver. 01"}  value="number|asc" />
+                            </Picker>
+                        </View>
+                    </View>
+                
                     <TouchableOpacity
                         onPress={ onToggleExpand }>
                         <View style={styles.cardInfo}>
@@ -132,46 +150,6 @@ const DocumentViewScreen = ({navigation, route}) => {
                             </View> 
                         : null
                     }
-
-                    {/* <Text style={[styles.textTitile,{ paddingLeft:15, marginBottom:10, marginTop:15}]}>Attechment</Text>
-                    
-                    <TouchableOpacity>
-                        <View style={styles.cardInfo}>
-                            <View style={styles.blockLeft}>
-                                <Text style={styles.textTitile}>file attach.mp4</Text>
-                                <Text 
-                                    ellipsizeMode='tail' 
-                                    numberOfLines={2}>
-                                        Description
-                                </Text>
-                            </View>
-                            <View style={styles.blockRight}>
-                                <Icon
-                                    name='chevron-right'
-                                    type='font-awesome'
-                                    color='#7f8c8d'/>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity>
-                        <View style={styles.cardInfo}>
-                            <View style={styles.blockLeft}>
-                                <Text style={styles.textTitile}>file attach other.pdf</Text>
-                                <Text 
-                                    ellipsizeMode='tail' 
-                                    numberOfLines={2}>
-                                        Description
-                                </Text>
-                            </View>
-                            <View style={styles.blockRight}>
-                                <Icon
-                                    name='chevron-right'
-                                    type='font-awesome'
-                                    color='#7f8c8d'/>
-                            </View>
-                        </View>
-                    </TouchableOpacity> */}
 
                     <View style={styles.DocumentContainer}>
                         <View style={{

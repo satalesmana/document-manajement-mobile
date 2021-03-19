@@ -5,6 +5,7 @@ import axios from 'axios'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector, useDispatch } from 'react-redux'
+import { lang } from '../../translations'
 import { 
     ScrollView, 
     SafeAreaView, 
@@ -24,7 +25,7 @@ import {
 const HomeScreen = ({navigation}) => {
     const WindowHeight = Dimensions.get('window').height;
 
-    let placeHolderSearch = "Search Mydocument"
+    let placeHolderSearch = lang('lbl_serc_home')
     const dispatch        = useDispatch();
     const {mydokumen}     = useSelector(state=>state.mydokumenReducer)
     const { baseUrl }     = useSelector(state=>state.configReducer);
@@ -189,6 +190,7 @@ const HomeScreen = ({navigation}) => {
 
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
                     { (refreshingBottom) ? <CardListSkeleton/> : null }
+                    <View style={{margin:15}}/>
                 </ScrollView>
             </View>
             

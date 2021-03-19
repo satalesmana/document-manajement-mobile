@@ -3,7 +3,7 @@ import {
     TEXT_INPUT_HINT,
     TEXT_PRIMARY,
     TEXT_SECONDARY,
-    APP_PRIMARY
+    APP_PRIMARY,
 } from '../../utils'
 
 const windowHeight = Dimensions.get("window").height;
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
         //padding:15,
         marginTop:15,
         minHeight: windowHeight - 150,
-        paddingLeft:10,
-        paddingRight:10,
+        // paddingLeft:10,
+        // paddingRight:10,
         
         //backgroundColor:'#80848a'
     },
@@ -172,6 +172,20 @@ const styles = StyleSheet.create({
         paddingLeft:20, 
         paddingRight:20,
         paddingBottom:15
+    },
+    inputSelect:{
+        width:windoWidth - 250,
+        color:TEXT_PRIMARY,
+    },
+    cardInfoVersion:{
+        marginBottom:5,
+        backgroundColor:'#fff',
+        paddingLeft:20,
+        paddingRight:20,
+        paddingTop:10,
+        //paddingBottom:10,
+        flexDirection:'row',
+        justifyContent:'space-between'
     }
 })
 

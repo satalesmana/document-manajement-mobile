@@ -30,7 +30,10 @@ import {
 
     SET_TASK,
     ADD_TASK,
-    DELETE_TASK
+    DELETE_TASK,
+
+    SET_EXAM,
+    EDIT_EXAM
 } from './types'
 
 export const setForm = (inputType, value) =>{
@@ -72,3 +75,6 @@ export const deleteActSearch = (key) => {return { type:DELETE_ACT_SEARCH, key: k
 export const setTask = (task) => { return { type:SET_TASK, task} }
 export const addTask = (task) => { return { type:ADD_TASK, task }}
 export const deleteTask = (key) => { return { type:DELETE_TASK, key:key } }
+
+export const setExamp = (exam) =>{ return {type:SET_EXAM, exam}}
+export const editExamp = (exam) =>{ return {type:EDIT_EXAM, exam}}
