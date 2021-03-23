@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './style'
 import { Icon, Button } from 'react-native-elements'
 import { CardBox } from '../../components'
+import { lang } from '../../translations'
 import { useSelector, useDispatch } from 'react-redux'
 import { 
     Text, 
@@ -112,21 +113,27 @@ const SearchSelectiontScreen = ({navigation}) => {
                             name='search'
                             type="font-awesome"
                             size={20} 
-                            color="#424242"/>
+                            color="#b5b3b3"/>
 
                         <TextInput
                             style={styles.inputSearch}
-                            placeholder="Type something"
+                            placeholder={lang("lbl_src_input")}
                             value={searchString}
                             onChangeText={(value) => {
                                 setSearchString(value)
                             }}
                             underlineColorAndroid="transparent"/>
                         
+                        </View>
+
                         <Button
+                            buttonStyle={{
+                                borderRadius:10,
+                                marginLeft:5
+                                //borderRadius: 20,
+                            }}
                             onPress={onPresSearchBtn}
-                            title="Search" />
-                    </View>
+                            title={lang("act_src_btn")} />
                 </View>
                 
                 {

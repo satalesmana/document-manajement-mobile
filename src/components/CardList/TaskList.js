@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import styles from './style'
+import HTMLView from 'react-native-htmlview'
 import { Icon } from 'react-native-elements';
 
 const TaskList = ({data}) => {
@@ -10,6 +11,8 @@ const TaskList = ({data}) => {
         {name:'exclamation-triangle', color:'#fac800', label:'Height'},
         {name:'exclamation-triangle', color:'#fa0000', label:'Urgent'}
     ]
+
+    const regex = /(<([^>]+)>)/ig;
 
     return (
         <View style={styles.containerTask}>
@@ -57,11 +60,12 @@ const TaskList = ({data}) => {
                     </View>
 
                 </View>
+                
                 <Text 
                     style={styles.textSubDesc}
                     ellipsizeMode='tail' 
                     numberOfLines={2}>
-                        {data.description}
+                        {data.description.replace(regex, '')}
                 </Text>
             </View>
         </View>

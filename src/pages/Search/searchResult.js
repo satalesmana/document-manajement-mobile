@@ -10,7 +10,8 @@ import {
     RefreshControl,
     Text, 
     View,
-    Dimensions
+    Dimensions,
+    StatusBar
 } from 'react-native'
 
 const SearchResultScreen = ({navigation, route}) => {
@@ -128,6 +129,7 @@ const SearchResultScreen = ({navigation, route}) => {
 
     return (
         <SafeAreaView>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
             <Appbar.Header dark={false} style={styles.appbarLight}>
                 <Appbar.BackAction onPress={onBackPage} />
                 <Appbar.Content title="Search Document" subtitle={keyword}/>

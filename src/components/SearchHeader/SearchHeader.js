@@ -72,8 +72,8 @@ const SearchHeader = ({placeHolder, navigation, onSetSortData}) => {
                     onValueChange={(itemValue, itemIndex) => onSortData(itemValue)}>
                         {/* <Picker.Item label={lang("acs_sort_asc_effdate")} value="effective_date|asc" />
                         <Picker.Item label={lang("acs_sort_dsc_effdate")} value="effective_date|desc" /> */}
-                        <Picker.Item label={lang("acs_sort_asc_docnum")}  value="number|asc" />
-                        <Picker.Item label={lang("acs_sort_dsc_docnum")} value="number|desc" />
+                        {/* <Picker.Item label={lang("acs_sort_asc_docnum")}  value="number|asc" />
+                        <Picker.Item label={lang("acs_sort_dsc_docnum")} value="number|desc" /> */}
                         <Picker.Item label={lang("acs_sort_asc_docname")} value="title|asc" />
                         <Picker.Item label={lang("acs_sort_dsc_docname")} value="title|desc" />
                 </Picker>

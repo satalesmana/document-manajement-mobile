@@ -141,7 +141,7 @@ const MytaskScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.bodyLightColor}>
 
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
             
             <Appbar.Header style={styles.toolbar}>
                 <View style={styles.toolbarContainer}>

@@ -51,5 +51,25 @@
     "lbl_serc_home":"Search Mydocument",
     "lbl_serc_fav":"Search Favourites",
     "lbl_serc_pub":"Search Publick Document",
-    "lbl_serc_rel":"Search Related Document"
+    "lbl_serc_rel":"Search Related Document",
+    "lbl_dvd_title":"Document detail",
+    "lbl_dvd_vers":"Versions",
+    "lbl_dvd_numb":"Number",
+    "lbl_dvd_info":"Meta data",
+    "lbl_dvd_des":"DESCRIPTION",
+    "lbl_dvd_val":"VALUE",
+    "lbl_dvd_type":"Type",
+    "lbl_dvd_effdate":"Effective date",
+    "lbl_dvd_expired":"Expired date",
+    "lbl_dvd_tags":"Tags",
+    "lbl_dvd_kategori":"Categories",
+    "lbl_dvd_lstupdate":"Last Update",
+
+    "lbl_src_input" : "Type something",
+    "act_src_btn":"Search",
+
+    "lbl_lgs_configurebtn": "Server Configuration",
+    "lbl_lgs_loginbtn":"Log In",
+    "acs_exam_dlgtimeup":"Your time is up"
+
 }

@@ -51,5 +51,24 @@
     "lbl_serc_home":"Cari dokumen saya",
     "lbl_serc_fav":"Cari dokumen favorit",
     "lbl_serc_pub":"Cari dokumen publik",
-    "lbl_serc_rel":"Cari dokumen terkait"
+    "lbl_serc_rel":"Cari dokumen terkait",
+    "lbl_dvd_title":"Detail dokumen",
+    "lbl_dvd_vers":"Versi",
+    "lbl_dvd_numb":"Nomor",
+    "lbl_dvd_info":"Meta data",
+    "lbl_dvd_des":"DESKRIPSI",
+    "lbl_dvd_val":"NILAI",
+    "lbl_dvd_type":"Tipe",
+    "lbl_dvd_effdate":"Tanggal berlaku",
+    "lbl_dvd_expired":"Tanggal berakhir",
+    "lbl_dvd_tags":"Tag",
+    "lbl_dvd_kategori":"Kategori",
+    "lbl_dvd_lstupdate":"Update Terakhir",
+
+    "lbl_src_input" : "Ketik sesuatu",
+    "act_src_btn":"Cari",
+
+    "lbl_lgs_configurebtn": "Pengaturan Server",
+    "lbl_lgs_loginbtn":"Log In",
+    "acs_exam_dlgtimeup":"Waktu pengerjaan quiz anda telah habis"
 }

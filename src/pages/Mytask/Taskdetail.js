@@ -50,6 +50,7 @@ const TaskdetailScreen = ({navigation, route}) => {
     const [isExamdialog, setExamdialog] = React.useState(false)
     const [taskSelected, setTaskSelected] = React.useState({})
     const [taskDuration, setTaskDuration] = React.useState(0)
+    const regex = /(<([^>]+)>)/ig;
 
     axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
     axios.defaults.headers.common['Accept'] = 'application/json';
@@ -112,7 +113,7 @@ const TaskdetailScreen = ({navigation, route}) => {
                 setTaskDuration(r.data.exam_max_duration)
                 setTaskSelected(task)
                 let info = lang("acs_taskd_examinfo")
-                .replace("__EXAM_MAXDURATION__", r.data.exam_max_duration)
+                    .replace("__EXAM_MAXDURATION__", r.data.exam_max_duration)
                 onsetAllertmessages(info)
                 setExamdialog(true)
             })
@@ -123,14 +124,19 @@ const TaskdetailScreen = ({navigation, route}) => {
         onsetShowalert(false)
         if(isExamdialog){
             let params = {...taskSelected,...{"duration":taskDuration}}
-            navigation.push("ExaminationScreen",params)
+            
+            axios.post(baseUrl+'/api/task/startExam/'+ taskSelected.id)
+            .then(r=>{
+                navigation.push("ExaminationScreen",params)
+            })
+            
         }else
             navigation.goBack()
     }
 
     return (
         <SafeAreaView style={styles.bodyLightColor}>
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
 
             <Animated.View style={{ height : headerHeight, marginBottom:headerMarbot,}}>
                 <ImageBackground source={headerBg2} style={{flex:1}}>
@@ -177,7 +183,7 @@ const TaskdetailScreen = ({navigation, route}) => {
                             {lang("acs_taskd_desc")}
                         </Text>
                         <Text style={styles.contentDescription}>
-                            {task.description}
+                            {task.description.replace(regex, '')}
                         </Text>
 
                         <View style={styles.horizontalLine}/>

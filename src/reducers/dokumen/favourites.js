@@ -19,12 +19,13 @@ const favouriteDokumenReducer = (state = initialState, action) => {
                     slug:d.slug,
                     type : d.type,
                     type_name : d.type_name,
-                    number : d.number,
                     title : d.title,
                     categories : d.categories,
+                    number : d.latest_version.number,
                     latest_version_id : d.latest_version.id,
                     latest_version_slug : d.latest_version.slug,
                     version: d.latest_version.version,
+                    version:d.latest_version.version,
                     owner : d.latest_version.owner
                 }
         })

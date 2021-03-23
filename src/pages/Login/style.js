@@ -5,7 +5,7 @@ import {
 import { 
     BTN_PRIMARY,
     TEXT_PRIMARY,
-    BTN_SENDONDARY,
+    TEXT_SECONDARY,
     TEXT_ERROR
 } from '../../utils'
 
@@ -68,11 +68,17 @@ const styles = StyleSheet.create({
         marginTop: 10,
         backgroundColor: BTN_PRIMARY
     },
+    configButton: {
+        borderRadius: 20,
+        height: 45,
+        marginTop: 10,
+        backgroundColor: TEXT_SECONDARY
+    },
     cancelButton: {
         borderRadius: 20,
         height: 45,
         marginTop: 10,
-        backgroundColor: BTN_SENDONDARY
+        backgroundColor: TEXT_SECONDARY
     },
     logoImage: {
         justifyContent: 'center',

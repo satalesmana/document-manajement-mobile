@@ -49,6 +49,14 @@ const styles = StyleSheet.create({
         
         //backgroundColor:'#80848a'
     },
+    bodyContent:{
+        backgroundColor:'white',
+        paddingLeft:10,
+        paddingRight:10,
+        paddingBottom:10,
+        borderBottomLeftRadius:5,
+        borderBottomRightRadius:5
+    },
     headerContent:{
         width:'100%',
         height:20,

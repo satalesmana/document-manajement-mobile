@@ -15,6 +15,7 @@ const windoWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     appbarLight:{
         backgroundColor: 'white',
+        height:78
     },
     container:{
         padding:20
@@ -80,15 +81,17 @@ const styles = StyleSheet.create({
         borderRadius:15
     },
     searchIcon: {
-        padding: 10,
+        paddingLeft:10,
+        paddingRight:10
+        //padding: 10,
     },
     inputSearch: {
         flex: 1,
         paddingTop: 10,
         paddingRight: 10,
-        paddingBottom: 10,
+        //paddingBottom: 10,
         paddingLeft: 0,
-        color: '#424242',
+        //color: '#424242',
         borderRadius:15
     },
     textTitleSearch:{

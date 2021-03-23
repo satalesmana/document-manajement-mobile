@@ -3,10 +3,10 @@ import styles from './style'
 import { Button } from 'react-native-elements'
 import { LogoVertical } from '../../components'
 import { useSelector, useDispatch } from 'react-redux'
+import { setAccount } from '../../actions'
+import { lang } from '../../translations'
+import { TEXT_INPUT_HINT } from '../../utils'
 import axios from 'axios'
-import { 
-    TEXT_INPUT_HINT
-} from '../../utils'
 import { 
     Keyboard, 
     View, 
@@ -18,7 +18,6 @@ import {
     StatusBar,
     SafeAreaView
 } from 'react-native'
-import { setAccount } from '../../actions'
 
 
 const LoginScreen = ({ navigation }) => {
@@ -80,7 +79,11 @@ const LoginScreen = ({ navigation }) => {
                                 buttonStyle={styles.loginButton}
                                 loading={loading}
                                 onPress={ onLoginPress }
-                                title="Sign In" />
+                                title={lang("lbl_lgs_loginbtn")} />
+                            
+                            <Button buttonStyle={styles.configButton} 
+                            onPress={()=>navigation.push("SetupScreen")}
+                            title={lang("lbl_lgs_configurebtn")}/>
                         </View>
                     </View>
                 </TouchableWithoutFeedback>

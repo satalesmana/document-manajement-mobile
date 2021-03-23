@@ -17,6 +17,11 @@ import {
 const WINDOWIDTH = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+    imageAttachment:{
+        width: WINDOWIDTH, 
+        height: 50,
+        resizeMode:'contain'
+    },
     appbarLight:{
         backgroundColor:APP_PRIMARY,
         paddingTop:20,

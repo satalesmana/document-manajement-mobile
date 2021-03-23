@@ -82,9 +82,15 @@ const ExaminationScreen = ({navigation,route}) => {
     }
 
     const onSubmitAnswer = (quizIndex, answerIndex) =>{
-        console.log(quizIndex, answerIndex)
-        let progres = (quizIndex +1) / (randQuizzes.length)
-        setMyprogres(progres)
+        axios.post(baseUrl+'/api/task/submitExam/'+taskParam.id,{
+            index:quizIndex,
+            answer:answerIndex
+        })
+        .then(r=>{
+            let progres = (quizIndex +1) / (randQuizzes.length)
+            setMyprogres(progres)
+        })
+        
     }
 
     const onPresFinishQuiz = () =>{
@@ -93,12 +99,22 @@ const ExaminationScreen = ({navigation,route}) => {
         setShowalert(true)
     }
 
+    const onTimeisup = () =>{
+        if(selectedAnsw != null)
+            onSubmitAnswer(quizIndex, selectedAnsw)
+
+        setAllertmessages(lang("acs_exam_dlgtimeup"))
+        setShowalert(true)
+    }
+
     const onConfirmdialog = () =>{
         setShowalert(false)
-        clearInterval(displayTimer)
-        console.log(taskParam.id)
-        dispatch(deleteTask(taskParam.id))
-        navigation.navigate('MainScreen', { screen: 'MyTask' });
+        axios.post(baseUrl+'/api/task/finishExam/'+taskParam.id)
+        .then(r=>{
+            dispatch(deleteTask(taskParam.id))
+            navigation.navigate('MainScreen', { screen: 'MyTask' });
+        })
+        
     }
 
     const onPressNextQuiz = () =>{
@@ -141,13 +157,26 @@ const ExaminationScreen = ({navigation,route}) => {
         }
     }
 
+    const attachmentList = () =>{
+        let attach = randQuizzes[quizIndex].attachments
+        return( attach.map( (item,i) => { 
+            return(<Image key={i} source={{uri:item}} 
+                style={styles.imageAttachment}/>)
+            } 
+        ));
+    }
+
     useEffect(() => {
-        //if(exam.length < 1)
-            onLoadExamdata()
+        onLoadExamdata()
+
+        const unsubscribe = navigation.addListener('blur', () => {
+            clearInterval(displayTimer);
+        });
 
         if(!loadTask){
             displayTimer = setInterval(()=>{
                 if(timerLeft <= 1){
+                    onTimeisup()
                     clearInterval(displayTimer);
                 }
                 timerLeft -= 1
@@ -157,17 +186,20 @@ const ExaminationScreen = ({navigation,route}) => {
         }
 
         BackHandler.addEventListener("hardwareBackPress",onBackAction);
-    },[]);
+        return unsubscribe;
+
+    },[navigation]);
 
     
     return (
         <SafeAreaView>
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
             <Appbar.Header style={styles.appbarLight}>
                 <Appbar.Content title={lang("acs_exam_title")}/>
             </Appbar.Header>
-            <ScrollView>
+            <ScrollView style={{marginBottom:90}}>
                 <View style={styles.container}>
+                    
                     <View style={styles.headerContainerSub}>
                         {
                             (loadTask) ? 
@@ -235,6 +267,18 @@ const ExaminationScreen = ({navigation,route}) => {
                                 </View>
                             }
                             
+                            {
+                                (!loadTask) ?
+                                    (randQuizzes.length > 0)?
+                                        (randQuizzes[quizIndex].attachments.length > 0)?
+                                            <View>
+                                                { attachmentList() }
+                                            </View>
+                                        : null
+                                    :null
+                                :null
+                            }
+
                             <Text style={{marginTop:15}}>{lang("acs_exam_answer")}:</Text>
                         </View>
 
@@ -323,20 +367,20 @@ const ExaminationScreen = ({navigation,route}) => {
                     }
                     
                 </View>
+
+                <AwesomeAlert
+                    show={showalert}
+                    showProgress={false}
+                    title={ lang("acs_taskd_info") }
+                    message={alertmessages}
+                    closeOnTouchOutside={false}
+                    closeOnHardwareBackPress={ false }
+                    
+                    showConfirmButton={true}
+                    confirmText="OK"
+                    onConfirmPressed={onConfirmdialog}/>
                 
             </ScrollView>
-
-            <AwesomeAlert
-                show={showalert}
-                showProgress={false}
-                title={ lang("acs_taskd_info") }
-                message={alertmessages}
-                closeOnTouchOutside={false}
-                closeOnHardwareBackPress={ false }
-                
-                showConfirmButton={true}
-                confirmText="OK"
-                onConfirmPressed={onConfirmdialog}/>
         </SafeAreaView>
     )
 }
