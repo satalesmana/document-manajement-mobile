@@ -26,7 +26,8 @@ const favouriteDokumenReducer = (state = initialState, action) => {
                     latest_version_slug : d.latest_version.slug,
                     version: d.latest_version.version,
                     version:d.latest_version.version,
-                    owner : d.latest_version.owner
+                    owner : d.latest_version.owner,
+                    class_name:d.class_name
                 }
         })
     }

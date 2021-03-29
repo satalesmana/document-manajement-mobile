@@ -49,6 +49,7 @@ const RelatedScreen = ({navigation}) => {
         to:to,
         total:total,
         per_page: perpage,
+        related:true,
         sort_field: sortField,
         sort_direction: sortDirection
     }
@@ -132,7 +133,7 @@ const RelatedScreen = ({navigation}) => {
     }
 
     useEffect(() => {
-        onLoadData()
+        onLoadData(params)
     },[]);
 
     return (
@@ -141,6 +142,7 @@ const RelatedScreen = ({navigation}) => {
             <SearchHeader  
                 placeHolder={placeHolderSearch} 
                 navigation={navigation}
+                documentmode='related'
                 onSetSortData={onSetSortData}>
             </SearchHeader>
 

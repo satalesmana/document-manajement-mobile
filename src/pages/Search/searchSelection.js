@@ -20,10 +20,11 @@ import {
     deleteActSearch
 } from '../../actions'
 
-const SearchSelectiontScreen = ({navigation}) => {
+const SearchSelectiontScreen = ({navigation, route}) => {
     const dispatch        = useDispatch();
     const { actView, actSearch} = useSelector(state=>state.historyReducer)
-
+    const {documentmode} = route.params
+    
     const [searchString,setSearchString] = React.useState('')
 
     const descHist = actView.sort(function(a,b){
@@ -49,7 +50,8 @@ const SearchSelectiontScreen = ({navigation}) => {
     const onPresSearchBtn = () =>{
         dispatch(setActSearch(searchString))
         navigation.push('SearchResultScreen',{
-            keyword: searchString
+            keyword: searchString,
+            documentmode:documentmode
         })
         setSearchString('')
     }
@@ -67,7 +69,8 @@ const SearchSelectiontScreen = ({navigation}) => {
                         type="font-awesome"/>
                         <TouchableOpacity  onPress={()=>{
                             navigation.push("SearchResultScreen",{
-                                keyword:data.name
+                                keyword:data.name,
+                                documentmode:documentmode
                             })
                         }}>
                             <Text 

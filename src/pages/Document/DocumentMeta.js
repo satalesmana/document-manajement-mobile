@@ -1,139 +1,207 @@
 import React from 'react'
 import styles from './style'
-import {
-    headerBg2,
-    IconArrowLeft
-} from '../../assets'
-import { 
-    StyleSheet, 
+import { lang } from '../../translations'
+import {  
     Text, 
     View,
-    SafeAreaView,
     ScrollView,
-    StatusBar,
-    ImageBackground,
     TouchableOpacity,
-    Image,
+    Dimensions
 } from 'react-native'
-import {
-    TEXT_INPUT_HINT,
-    TEXT_PRIMARY,
-    TEXT_SECONDARY
-} from '../../utils'
 
 import { Icon } from 'react-native-elements'
 
+const WindowHeight = Dimensions.get("window").height;
 
-const DocumentMetaScreen = ({navigation, route}) => {
-    const metadata = route.params;
-    const onBackPage = () =>{
-        navigation.goBack()
-    }
-
+const DocumentMetaScreen = ({data}) => {
 
     return (
-        <SafeAreaView style={{backgroundColor:'white'}}>
+        <View style={{
+            height:WindowHeight-120,
+            paddingBottom:10,
+            overflow:'hidden'
+        }}>
             <ScrollView>
-                <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
-                <View style={styles.roudedContainer}>
-                    <ImageBackground 
-                        source={headerBg2} 
-                        style={styles.backround}
-                        imageStyle={styles.roudedContainer}>
-                            <TouchableOpacity onPress={onBackPage}>
-                                <IconArrowLeft style={styles.arrowBack}/>
-                            </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.containerItemData}>
+                        <Icon
+                            name='key'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
 
-                            <View style={styles.containerCenter}>
-                                <Text style={styles.textTitle}>{metadata.title}</Text>
-                                <Text style={styles.textSubTitle}>No. {metadata.number}</Text>
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_numb")}</Text>
+                                <Text style={styles.textLabelValue}>{data.number}</Text>
                             </View>
-                    </ImageBackground>
-                </View>
-                <View style={styles.boxTask}>
-                    <View style={[styles.blockTask,{width:'40%'}]}>
-                        <Image 
-                            style={styles.imgAvatar}
-                            resizeMode='cover'
-                            source={
-                                { uri: metadata.owner.profile_photo_url}
-                            } />
-                    </View>
 
-                    <View style={[styles.blockTask,{width:'60%'}]}>
-                        <Text style={styles.docOwnerLabel}>DOCUMENT OWNER</Text>
-                        <Text style={styles.docOwnerName}> {metadata.owner.name} </Text>
-                        <View style={styles.column}>
-                            <Icon 
-                                name='envelope-o'
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
                                 type='font-awesome'
-                                color={TEXT_PRIMARY}
-                                size={12}/>
-                            <Text style={styles.docOwnerSubName}> {metadata.owner.email}</Text>
-                        </View>
-
-                        <View style={styles.column}>
-                            <Icon 
-                                name='building-o'
-                                type='font-awesome'
-                                color={TEXT_PRIMARY}
-                                size={12}/>
-                            <Text style={styles.docOwnerSubName}> {metadata.owner.position}</Text>
+                                color='#dbdbdb'/>
                         </View>
                     </View>
-                </View>
-                <View style={styles.containerData}>
-                    <View style={styles.containerItem}>
-                        <Text style={styles.textLabel}>DESCRIPTION</Text>
-                        <Text style={styles.textLabel}>VALUE</Text>
-                    </View>
-
+                </TouchableOpacity>
+                
+                <TouchableOpacity>
                     <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Number</Text>
-                        <Text style={styles.textLabelValue}>{metadata.number}</Text>
-                    </View>
+                        <Icon
+                            name='file-text'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
 
-                    <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Type</Text>
-                        <Text style={styles.textLabelValue}>{metadata.type_name}</Text>
-                    </View>
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_type")}</Text>
+                                <Text style={styles.textLabelValue}>{data.type_name}</Text>
+                            </View>
 
-                    <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Version</Text>
-                        <Text style={styles.textLabelValue}>{metadata.version}</Text>
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
                     </View>
+                </TouchableOpacity>
 
+                <TouchableOpacity>
                     <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Effective Date</Text>
-                        <Text style={styles.textLabelValue}>{metadata.effective_date}</Text>
-                    </View>
+                        <Icon
+                            name='files-o'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
 
-                    <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Expired Date</Text>
-                        <Text style={styles.textLabelValue}>{metadata.expired_date}</Text>
-                    </View>
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_vers")}</Text>
+                                <Text style={styles.textLabelValue}>{data.version}</Text>
+                            </View>
 
-                    <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Tags</Text>
-                        <Text style={styles.textLabelValue}>
-                            {(metadata.tags) ? metadata.tags.join(', ') : ''}
-                        </Text>
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
                     </View>
+                </TouchableOpacity>
 
+                <TouchableOpacity>
                     <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Categories</Text>
-                        <Text style={styles.textLabelValue}>
-                            {(metadata.categories) ? metadata.categories.join(', ') : ''}
-                        </Text>
-                    </View>
+                        <Icon
+                            name='calendar'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
 
-                    <View style={styles.containerItemData}>
-                        <Text style={styles.textLabelData}>Last Update</Text>
-                        <Text style={styles.textLabelValue}>{metadata.last_update}</Text>
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_effdate")}</Text>
+                                <Text style={styles.textLabelValue}>{data.effective_date}</Text>
+                            </View>
+
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
                     </View>
-                </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={styles.containerItemData}>
+                        <Icon
+                            name='calendar'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
+
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_expired")}</Text>
+                                <Text style={styles.textLabelValue}>{data.expired_date}</Text>
+                            </View>
+
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={styles.containerItemData}>
+                        <Icon
+                            name='tags'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
+
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_tags")}</Text>
+                                <Text style={styles.textLabelValue}>{(data.tags) ? data.tags.join(', ') : ''}</Text>
+                            </View>
+
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <View style={styles.containerItemData}>
+                        <Icon
+                            name='list'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
+
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_kategori")}</Text>
+                                <Text style={styles.textLabelValue}>{(data.categories) ? data.categories.join(', ') : ''}</Text>
+                            </View>
+
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+
+                {/* <TouchableOpacity>
+                    <View style={styles.containerItemData}>
+                        <Icon
+                            name='calendar'
+                            type='font-awesome'
+                            color='#a6a6a6'/>
+
+                        <View style={styles.containerRow}>
+                            <View style={styles.marginContainer}>
+                                <Text style={styles.textLabelData}>{lang("lbl_dvd_lstupdate")}</Text>
+                                <Text style={styles.textLabelValue}>{data.last_update}</Text>
+                            </View>
+
+                            <Icon
+                                size={15}
+                                name={'chevron-right'}
+                                type='font-awesome'
+                                color='#dbdbdb'/>
+                        </View>
+                    </View>
+                </TouchableOpacity> */}
+
+                <View style={{height:20}}></View>
+
             </ScrollView>
-        </SafeAreaView>
+        </View>
     )
 }
 

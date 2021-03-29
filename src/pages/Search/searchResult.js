@@ -1,8 +1,10 @@
 import React, { useEffect}  from 'react'
 import { Appbar } from 'react-native-paper'
 import styles from './style'
-import { CardList, CardListSkeleton } from '../../components'
 import axios from 'axios'
+import AwesomeAlert from 'react-native-awesome-alerts'
+import { lang } from '../../translations'
+import { CardList, CardListSkeleton } from '../../components'
 import { useSelector, useDispatch } from 'react-redux'
 import { 
     SafeAreaView,
@@ -22,9 +24,10 @@ const SearchResultScreen = ({navigation, route}) => {
     axios.defaults.headers.common['Authorization'] = 'Bearer '+token;
     axios.defaults.headers.common['Accept'] = 'application/json';
 
-    const { keyword } = route.params;
+    const { keyword, documentmode } = route.params;
     const [refreshing, setRefreshing] = React.useState(false);
     const [searchData, setSearchData] = React.useState([]);
+    //console.log(documentmode)
     const [page, setPage] = React.useState(1);
     const [from, setFrom] = React.useState(0);
     const [to, setTo] = React.useState(0);
@@ -34,32 +37,31 @@ const SearchResultScreen = ({navigation, route}) => {
     const [sortDirection, setSortDirection] = React.useState('asc')
     const [scrolTohrottle, setScrolTohrottle] = React.useState(15)
     const [refreshingBottom, setRefreshingBottom] = React.useState(false)
+    const [showalert, setShowalert] = React.useState(false)
+    const [alertmessages, setAlertmessages] = React.useState("")
 
     const onBackPage = () =>{
         navigation.goBack()
     }
 
-    const onLoadData = (
-        pageSort = page,
-        fromSort = from,
-        toSort  = to,
-        totalSort = total,
-        sort = sortField,
-        direction=sortDirection
-    ) => {
+    let FilterParams = {
+        current_page: page,
+        page: page,
+        from: from,
+        to:to,
+        keyword:keyword,
+        public:true,
+        total:total,
+        per_page: perpage,
+        sort_field: sortField,
+        sort_direction: sortDirection
+    }
+
+    const onLoadData = (FilterParams) => {
         setRefreshing(true);
+        onSetDocumentMode()
         axios.get(baseUrl + '/api/document',
-            {params:{
-                current_page: pageSort,
-                page: pageSort,
-                from: fromSort,
-                to:toSort,
-                keyword:keyword,
-                total:totalSort,
-                per_page: perpage,
-                sort_field: sort,
-                sort_direction: direction
-            }}
+            {params:FilterParams}
         ).then(r=>{
             setRefreshing(false);
 
@@ -72,6 +74,9 @@ const SearchResultScreen = ({navigation, route}) => {
             setPerpage(r.data.meta.per_page)
 
         }).catch(e=>{
+            console.log(e)
+            setAlertmessages(e.toString())
+            setShowalert(true)
             setRefreshing(false);
         })
     }
@@ -81,21 +86,12 @@ const SearchResultScreen = ({navigation, route}) => {
         if(to < total){
             setRefreshingBottom(true);
             setScrolTohrottle( parseInt(scrolTohrottle) + parseInt(perpage))
-            
-            let nextPage = parseInt(page) + 1
+            onSetDocumentMode()
+
+            FilterParams.page = parseInt(page) + 1
             
             axios.get(baseUrl + '/api/document',
-                {params:{
-                    current_page: page,
-                    page: nextPage,
-                    from: from,
-                    to:to,
-                    keyword:keyword,
-                    total:total,
-                    per_page: perpage,
-                    sort_field: sortField,
-                    sort_direction: sortDirection
-                }}
+                {params:FilterParams}
             ).then(r=>{
                 setRefreshingBottom(false);
 
@@ -117,14 +113,24 @@ const SearchResultScreen = ({navigation, route}) => {
 
     const onRefreshData = () =>{
         setSearchData([])
-        onLoadData( 0, 0, 0, 0,
-            sortField,
-            sortDirection
-        )
+        onLoadData(FilterParams)
+    }
+
+    const onSetDocumentMode = () =>{
+        switch(documentmode){
+            case 'public':
+                FilterParams.public = true
+            case 'favourite':
+                FilterParams.favourite = true
+            case 'related':
+                FilterParams.related = true
+            default:
+                FilterParams.mine = true
+        }
     }
 
     useEffect(() => {
-        onLoadData()
+        onLoadData(FilterParams)
     },[]);
 
     return (
@@ -164,6 +170,18 @@ const SearchResultScreen = ({navigation, route}) => {
                     
                         <Text> </Text>
                 </ScrollView>
+
+                <AwesomeAlert
+                    show={showalert}
+                    showProgress={false}
+                    title={ lang("acs_taskd_info") }
+                    message={alertmessages}
+                    closeOnTouchOutside={false}
+                    closeOnHardwareBackPress={ false }
+                    showConfirmButton={true}
+                    confirmText="OK"
+                    onConfirmPressed={()=>{ setShowalert(false) }}/>
+
             </View>
         </SafeAreaView>
     )

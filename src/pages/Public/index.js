@@ -47,6 +47,7 @@ const PublicScreen = ({navigation}) => {
         page: page,
         from: from,
         to:to,
+        public:true,
         total:total,
         per_page: perpage,
         sort_field: sortField,
@@ -132,7 +133,7 @@ const PublicScreen = ({navigation}) => {
     }
 
     useEffect(() => {
-        onLoadData()
+        onLoadData(params)
     },[]);
 
     return (
@@ -141,6 +142,7 @@ const PublicScreen = ({navigation}) => {
             <SearchHeader  
                 placeHolder={placeHolderSearch} 
                 navigation={navigation}
+                documentmode='public'
                 onSetSortData={onSetSortData}>    
             </SearchHeader>
             

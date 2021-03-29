@@ -44,6 +44,7 @@ const FavouritesScreen = ({navigation}) => {
         page: page,
         from: from,
         to:to,
+        favourite:true,
         total:total,
         per_page: perpage,
         sort_field: sortField,
@@ -134,7 +135,7 @@ const FavouritesScreen = ({navigation}) => {
     
 
     useEffect(() => {
-        onLoadData()
+        onLoadData(params)
     },[]);
 
 
@@ -144,6 +145,7 @@ const FavouritesScreen = ({navigation}) => {
             <SearchHeader  
                 placeHolder={placeHolderSearch} 
                 navigation={navigation}
+                documentmode='favourite'
                 onSetSortData={onSetSortData}>
             </SearchHeader>            
             

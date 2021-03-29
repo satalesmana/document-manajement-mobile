@@ -10,6 +10,11 @@ import {
     TaskListSkeleton
 } from './CardList'
 
+import {
+    BounceLeftComment,
+    BounceRightComment
+} from './comment'
+
 export { 
     ImageSlider, 
     BottomNavigator, 
@@ -19,5 +24,7 @@ export {
     CardList,
     CardBox,
     CardListSkeleton,
-    TaskListSkeleton
+    TaskListSkeleton,
+    BounceLeftComment,
+    BounceRightComment
 }

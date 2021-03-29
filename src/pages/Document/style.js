@@ -10,6 +10,9 @@ const windowHeight = Dimensions.get("window").height;
 const windoWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+    containerTab:{
+        height:  (windowHeight)/(0.8)
+    },  
     appbarLight:{
         backgroundColor:APP_PRIMARY,
         paddingTop:20,
@@ -75,8 +78,13 @@ const styles = StyleSheet.create({
     },
     containerItemData:{
         flexDirection:'row',
-        justifyContent:'space-between',
-        marginTop:10,
+        alignItems:'center',
+        backgroundColor:'#ffffff',
+        marginBottom:1.5,
+        paddingTop:10,
+        paddingBottom:10,
+        paddingLeft:15,
+        paddingRight:15
     },
     textLabel:{
         fontWeight:'bold',
@@ -168,12 +176,13 @@ const styles = StyleSheet.create({
         padding:15
     },
     textLabelData:{
-        color:TEXT_PRIMARY
+        color:TEXT_PRIMARY,
+        //fontWeight:'bold',
+        fontSize:17
     },
     textLabelValue:{
-        color:TEXT_PRIMARY,
-        fontWeight:'bold',
-        fontSize:16
+        color:'#bfbfbf',
+        //fontStyle:'italic'
     },
     expandBox:{
         backgroundColor:'white', 
@@ -194,6 +203,64 @@ const styles = StyleSheet.create({
         //paddingBottom:10,
         flexDirection:'row',
         justifyContent:'space-between'
+    },
+    containerRow:{
+        flexDirection:'row',
+        width:310,
+        alignItems:'center',
+        justifyContent:'space-between'
+        
+    },
+    marginContainer:{
+        marginLeft : 15
+    },
+    commentContainer:{
+        height:windowHeight - 120,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
+    boxCommentInput:{
+        flexDirection:'row',
+        paddingLeft:15,
+        paddingRight:5,
+        paddingTop:10,
+        paddingBottom:20,
+        alignItems:'center',
+        justifyContent:'space-between',
+        backgroundColor:"white",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.39,
+        shadowRadius: 8.30,
+
+        elevation: 13,
+    },
+    inputContainer:{
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e8e8e8',
+        borderRadius:15,
+    },
+    textInput:{
+        flex: 1,
+        paddingTop: 10,
+        paddingRight: 10,
+        paddingLeft: 10,
+        borderRadius:15
+    },
+    buttonComment:{
+        borderRadius:10,
+        marginLeft:5
+    },
+    commentList:{
+        flex:1,
+        paddingLeft:10,
+        paddingRight:10
     }
 })
 

@@ -89,6 +89,7 @@ const HomeScreen = ({navigation}) => {
                 from: fromSort,
                 to:toSort,
                 total:totalSort,
+                mine:true,
                 per_page: perpage,
                 sort_field: sort,
                 sort_direction: direction
@@ -121,6 +122,7 @@ const HomeScreen = ({navigation}) => {
                     page: nextPage,
                     from: from,
                     to:to,
+                    mine:true,
                     total:total,
                     per_page: perpage,
                     sort_field: sortField,
@@ -155,6 +157,7 @@ const HomeScreen = ({navigation}) => {
             <SearchHeader  
                 placeHolder={placeHolderSearch} 
                 navigation={navigation}
+                documentmode='mine'
                 onSetSortData={setSortData}/>
 
             <View style={{

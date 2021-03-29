@@ -20,12 +20,13 @@ import {
     Avatar 
 } from 'react-native-elements'
 
-const SearchHeader = ({placeHolder, navigation, onSetSortData}) => { 
+const SearchHeader = ({placeHolder, navigation, onSetSortData, documentmode}) => { 
+    
     const { user } = useSelector(state=>state.accountReducer)
     const avatarUser = (user.profile_photo_url) ? {uri:user.profile_photo_url} : AvatarDefault
     const [selectedValue, setSelectedValue] = React.useState("title|asc");
 
-    const onIconSearchPress = () =>{ navigation.navigate("SearchSelectiontScreen") }
+    const onIconSearchPress = () =>{ navigation.navigate("SearchSelectiontScreen", {documentmode:documentmode}) }
 
     const onViewProfile = () =>{ navigation.navigate("AccountScreen") }
 

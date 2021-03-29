@@ -7,7 +7,7 @@ import FavouritesScreen from './Favourites'
 import PublicScreen from './Public'
 import RelatedScreen from './Related'
 import { MytaskScreen,TaskdetailScreen } from './Mytask'
-import { DocumentViewScreen, DocumentMetaScreen } from './Document'
+import { DocumentViewScreen, DocumentMetaScreen, DocumentScreen } from './Document'
 import { SearchSelectiontScreen, SearchResultScreen } from './Search'
 import { LoginScreen, SetupScreen} from './Login'
 import ExaminationScreen from './examination'
@@ -28,5 +28,6 @@ export {
     DocumentMetaScreen,
     MytaskScreen,
     TaskdetailScreen,
-    ExaminationScreen
+    ExaminationScreen,
+    DocumentScreen
 }

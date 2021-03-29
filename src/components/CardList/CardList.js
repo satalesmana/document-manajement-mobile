@@ -18,7 +18,7 @@ const CardList = ({data={}}) => {
     const { actView, actSearch} = useSelector(state=>state.historyReducer)
 
     const onViewDocument = (data) =>{
-        navigation.push('DocumentViewScreen',data)
+        navigation.push('DocumentScreen',data)
 
         dispatch(setActView(data))
     }

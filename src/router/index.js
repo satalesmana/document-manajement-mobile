@@ -20,7 +20,8 @@ import {
     DocumentViewScreen,
     DocumentMetaScreen,
     TaskdetailScreen,
-    ExaminationScreen
+    ExaminationScreen,
+    DocumentScreen
  } from '../pages';
 
 const Tab = createBottomTabNavigator();
@@ -54,6 +55,7 @@ const Router = () => {
             <Stack.Screen name="DocumentMetaScreen" component={DocumentMetaScreen} options={{headerShown:false}} />
             <Stack.Screen name="TaskdetailScreen" component={TaskdetailScreen} options={{headerShown:false}} />
             <Stack.Screen name="ExaminationScreen" component={ExaminationScreen} options={{headerShown:false}}/>
+            <Stack.Screen name="DocumentScreen" component={DocumentScreen} options={{headerShown:false}} />
         </Stack.Navigator>
     )
 }

@@ -22,7 +22,7 @@ const HeaderApp = ({navigation}) => {
 
     const { user } = useSelector(state=>state.accountReducer)
     
-    const avatarUser = (user.profile_photo_url) ? {uri:user.profile_photo_url} : AvatarDefault
+    const avatarUser = (user.profile_photo_path) ? {uri:user.profile_photo_path} : AvatarDefault
     
     return (
         <View style={styles.roudedContainer}>
