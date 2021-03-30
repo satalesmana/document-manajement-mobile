@@ -27,6 +27,7 @@ const DocumentMetaScreen = ({data}) => {
                         <Icon
                             name='key'
                             type='font-awesome'
+                            size={18}
                             color='#a6a6a6'/>
 
                         <View style={styles.containerRow}>
@@ -48,6 +49,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='file-text'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 
@@ -70,6 +72,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='files-o'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 
@@ -92,6 +95,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='calendar'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 
@@ -114,6 +118,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='calendar'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 
@@ -136,6 +141,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='tags'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 
@@ -158,6 +164,7 @@ const DocumentMetaScreen = ({data}) => {
                     <View style={styles.containerItemData}>
                         <Icon
                             name='list'
+                            size={18}
                             type='font-awesome'
                             color='#a6a6a6'/>
 

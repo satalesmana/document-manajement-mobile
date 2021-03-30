@@ -1,21 +1,27 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux'
 import { 
     StyleSheet, 
     Text, 
     View,
     TouchableOpacity
 } from 'react-native'
-
+import {
+    setActView
+} from '../../actions'
 import {
     Icon,
     Badge
 } from 'react-native-elements'
 
 const CardBox = ({data={}}) => {
+    const dispatch        = useDispatch();
     const navigation      = useNavigation();
+
     const onViewDetail = () =>{
-        navigation.push('DocumentViewScreen',data)
+        navigation.push('DocumentScreen',data)
+        //dispatch(setActView(data))
     }
 
     return (

@@ -4,6 +4,7 @@ import { Icon, Button } from 'react-native-elements'
 import { CardBox } from '../../components'
 import { lang } from '../../translations'
 import { useSelector, useDispatch } from 'react-redux'
+import { Appbar } from 'react-native-paper'
 import { 
     Text, 
     View,
@@ -11,7 +12,7 @@ import {
     TextInput,
     StatusBar,
     ScrollView,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native'
 import {
     resetActView,
@@ -62,7 +63,7 @@ const SearchSelectiontScreen = ({navigation, route}) => {
 
     const ListSearchHistory = ({data={}}) =>{
         return <View style={styles.historyList}>
-                <View style={{ flexDirection:'row'}}>
+                <View style={{ flexDirection:'row', flex:1}}>
                     <Icon
                         name="clock-o"
                         color="#ababab"
@@ -84,7 +85,7 @@ const SearchSelectiontScreen = ({navigation, route}) => {
                     
                 </View>
 
-                <View style={{ justifyContent:'center' }}>
+                <View style={{ justifyContent:'center', }}>
                     <Icon
                         name="trash"
                         type="font-awesome"
@@ -97,9 +98,23 @@ const SearchSelectiontScreen = ({navigation, route}) => {
 
     return (
         <SafeAreaView style={styles.searchContainer}>
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
-            <ScrollView>
-                <View style={styles.contanierHeader}>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
+            <Appbar.Header dark={true} style={styles.appbarLight}>
+                <Appbar.BackAction onPress={onPressBack} />
+
+                    <TextInput
+                        style={styles.inputSearch}
+                        placeholder={lang("lbl_src_input")}
+                        value={searchString}
+                        onChangeText={(value) => {
+                            setSearchString(value)
+                        }}
+                        underlineColorAndroid="transparent"/> 
+                    <Appbar.Action icon="magnify" onPress={onPresSearchBtn} />
+                    
+            </Appbar.Header>
+            <ScrollView style={{paddingLeft:15, paddingRight:15}}>
+                {/* <View style={styles.contanierHeader}>
                     <View style={{ width:40 }}>
                         <Icon
                             name='arrow-left'
@@ -137,7 +152,7 @@ const SearchSelectiontScreen = ({navigation, route}) => {
                             }}
                             onPress={onPresSearchBtn}
                             title={lang("act_src_btn")} />
-                </View>
+                </View> */}
                 
                 {
                     (typeof(actView)  !== undefined && actView.length > 0) ? 

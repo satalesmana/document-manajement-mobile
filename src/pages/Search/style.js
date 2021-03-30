@@ -6,7 +6,8 @@ import {
     APP_PRIMARY,
     TEXT_PRIMARY,
     TEXT_SECONDARY,
-    TEXT_ERROR
+    TEXT_ERROR,
+    APP_SECONDARY
 } from '../../utils'
 
 const windowHeight = Dimensions.get('window').height;
@@ -14,8 +15,9 @@ const windoWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     appbarLight:{
-        backgroundColor: 'white',
-        height:78
+        backgroundColor:APP_PRIMARY,
+        height:70,
+        marginTop:10
     },
     container:{
         padding:20
@@ -87,12 +89,16 @@ const styles = StyleSheet.create({
     },
     inputSearch: {
         flex: 1,
-        paddingTop: 10,
-        paddingRight: 10,
+        paddingTop: 8,
+        paddingRight: 5,
+        marginTop:10,
         //paddingBottom: 10,
-        paddingLeft: 0,
+        paddingLeft: 10,
+        backgroundColor:APP_SECONDARY,
         //color: '#424242',
-        borderRadius:15
+        //backgroundColor:'#f0f0f0',
+        borderRadius:15,
+        color:'white'
     },
     textTitleSearch:{
         color:TEXT_PRIMARY,
@@ -104,11 +110,12 @@ const styles = StyleSheet.create({
     },
     searchContainer:{
         backgroundColor:'#fff',
-        padding:15,
+        //padding:15,
         flex:1
     },
     contanierHeader:{
         flexDirection:'row',
+        backgroundColor:'blue',
         marginTop:15,
         alignItems:'center',
         justifyContent:'space-between'

@@ -18,13 +18,20 @@ const historyReducer = (state = initialState, action) => {
             let index = state.actView.length + 1
             
             let itemState = state.actView.filter((item) => item.id !== action.actView.id)
-            
             let actView = itemState.concat({
                 key: index,
                 id:action.actView.id,
                 title: action.actView.title,
                 type_name: action.actView.type_name,
                 type: action.actView.type,
+
+
+                slug:action.actView.slug,
+                categories : action.actView.categories,
+                number : action.actView.number,
+                latest_version_id : action.actView.latest_version_id,
+                version: action.actView.version,
+                class_name:action.actView.class_name
 
             })
 

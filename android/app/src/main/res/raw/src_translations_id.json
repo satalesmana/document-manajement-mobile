@@ -69,5 +69,13 @@
     "act_src_btn":"Cari",
 
     "lbl_lgs_configurebtn": "Pengaturan Server",
-    "lbl_lgs_loginbtn":"Log In"
+    "lbl_lgs_loginbtn":"Log In",
+    "acs_exam_dlgtimeup":"Waktu pengerjaan quiz anda telah habis",
+
+    "acm_tab_doc":"Dokumen",
+    "acm_tab_meta":"meta data",
+    "acm_tab_comment":"Komentar",
+    "acm_tab_docdetail":"Detail Dokumen",
+    "acm_input_comment":"Masukan komentar anda",
+    "acm_btn_comment":"Kirim"
 }

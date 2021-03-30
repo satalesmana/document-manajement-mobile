@@ -60,6 +60,7 @@ const SearchResultScreen = ({navigation, route}) => {
     const onLoadData = (FilterParams) => {
         setRefreshing(true);
         onSetDocumentMode()
+
         axios.get(baseUrl + '/api/document',
             {params:FilterParams}
         ).then(r=>{
@@ -87,7 +88,7 @@ const SearchResultScreen = ({navigation, route}) => {
             setRefreshingBottom(true);
             setScrolTohrottle( parseInt(scrolTohrottle) + parseInt(perpage))
             onSetDocumentMode()
-
+            
             FilterParams.page = parseInt(page) + 1
             
             axios.get(baseUrl + '/api/document',
@@ -117,16 +118,23 @@ const SearchResultScreen = ({navigation, route}) => {
     }
 
     const onSetDocumentMode = () =>{
-        switch(documentmode){
-            case 'public':
-                FilterParams.public = true
-            case 'favourite':
-                FilterParams.favourite = true
-            case 'related':
-                FilterParams.related = true
-            default:
-                FilterParams.mine = true
-        }
+
+        delete FilterParams.public;
+        delete FilterParams.favourite;
+        delete FilterParams.related;
+        delete FilterParams.mine;
+
+        if(documentmode=='favourite')
+            FilterParams.favourite = true
+
+        if(documentmode=='public')
+            FilterParams.public = true
+        
+        if(documentmode=='related')
+            FilterParams.related = true
+
+        if(documentmode=='mine')
+            FilterParams.mine = true
     }
 
     useEffect(() => {
@@ -135,8 +143,8 @@ const SearchResultScreen = ({navigation, route}) => {
 
     return (
         <SafeAreaView>
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
-            <Appbar.Header dark={false} style={styles.appbarLight}>
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
+            <Appbar.Header dark={true} style={styles.appbarLight}>
                 <Appbar.BackAction onPress={onBackPage} />
                 <Appbar.Content title="Search Document" subtitle={keyword}/>
             </Appbar.Header>

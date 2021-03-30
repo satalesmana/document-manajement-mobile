@@ -19,7 +19,6 @@ const CardList = ({data={}}) => {
 
     const onViewDocument = (data) =>{
         navigation.push('DocumentScreen',data)
-
         dispatch(setActView(data))
     }
 

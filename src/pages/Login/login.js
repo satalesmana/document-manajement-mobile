@@ -57,7 +57,7 @@ const LoginScreen = ({ navigation }) => {
                             <View style={styles.logoImage}>
                                 <LogoVertical />
                             </View>
-                            {/* <Text>{baseUrl}</Text> */}
+                            
                             <TextInput 
                                 placeholder="Email" 
                                 placeholderColor= {TEXT_INPUT_HINT}

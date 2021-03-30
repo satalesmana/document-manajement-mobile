@@ -12,19 +12,13 @@ import {
   SafeAreaView,
   StatusBar,
   Text,
-  View
+  View,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native'
 
 
 const TopTab = createMaterialTopTabNavigator();
-
-const  HomeScreen = ()=> {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
 
 const DocumentScreen = ({navigation, route}) => {
   const { id, class_name } = route.params;
@@ -156,7 +150,7 @@ const DocumentScreen = ({navigation, route}) => {
 
   return (
     <SafeAreaView>
-      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+      <StatusBar translucent backgroundColor="transparent" barStyle="dark-light"/>
       <Appbar.Header dark={true} style={styles.appbarLight}>
           <Appbar.BackAction onPress={onBackPage} />
           <Appbar.Content title={lang("lbl_dvd_title")}/>
@@ -184,7 +178,11 @@ const DocumentScreen = ({navigation, route}) => {
                   {props => <DocumentMetaScreen data={document} {...props} />}
             </TopTab.Screen>
             <TopTab.Screen name="DocumentComment" options={{ tabBarLabel: lang("acm_tab_comment") }}>
-                  {props => <DocumentComment {...props} data={document} />}
+                  {props => <KeyboardAvoidingView 
+                      behavior="padding"
+                      style={{flex:1}}>
+                              <DocumentComment {...props} data={document} /> 
+                            </KeyboardAvoidingView>}
             </TopTab.Screen>
             
         </TopTab.Navigator>

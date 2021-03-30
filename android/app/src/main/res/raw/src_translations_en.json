@@ -69,6 +69,14 @@
     "act_src_btn":"Search",
 
     "lbl_lgs_configurebtn": "Server Configuration",
-    "lbl_lgs_loginbtn":"Log In"
+    "lbl_lgs_loginbtn":"Log In",
+    "acs_exam_dlgtimeup":"Your time is up",
+
+    "acm_tab_doc":"document",
+    "acm_tab_meta":"meta data",
+    "acm_tab_comment":"Comments",
+    "acm_tab_docdetail":"Document Detail",
+    "acm_input_comment":"Type your commentar",
+    "acm_btn_comment":"Submit"
 
 }

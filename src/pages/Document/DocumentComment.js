@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styles from './style'
 import axios from 'axios'
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { lang } from '../../translations'
 import { useSelector, useDispatch } from 'react-redux'
 import { 
@@ -99,6 +100,7 @@ const DocumentComment = ({data}) => {
                     onPress={onSubmitComment}
                     title={lang("acm_btn_comment")} />
             </View>
+            <KeyboardSpacer/>
         </View>
         
     )

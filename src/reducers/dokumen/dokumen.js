@@ -25,7 +25,6 @@ const mydokumenReducer = (state = initialState, action) => {
                     latest_version_id : d.latest_version.id,
                     latest_version_slug : d.latest_version.slug,
                     version: d.latest_version.version,
-                    version:d.latest_version.version,
                     owner : d.latest_version.owner,
                     class_name:d.class_name
                 }
