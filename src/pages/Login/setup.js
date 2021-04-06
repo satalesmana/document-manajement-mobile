@@ -109,7 +109,7 @@ const SetupScreen = ({navigation}) => {
                                 placeholder="8080" 
                                 value={formModel.port}
                                 placeholderColor="#c4c3cb" 
-                                onChangeText= {value => dispatch(onInputChange(value,'port'))}
+                                onChangeText= {value => onInputChange(value,'port')}
                                 style={styles.loginFormTextInput} />
 
                             <Button
